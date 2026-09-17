@@ -1,0 +1,25 @@
+int y1 = 13;
+read(q2);
+read(n3);
+int dead_q4 = n3 + 12 - q2;
+int dead_f5 = q2 * 5 * 4;
+int dead_w6 = q2 * 7 * n3;
+int dead_v7 = n3 * y1 + y1;
+int dead_f8 = q2 * n3 - 1;
+int r9 = 5 * 11 - 9;
+int d10 = q2 + 1;
+int p11 = y1 + n3 + n3 + 7;
+int h12 = y1 + n3 + n3 - 9;
+int dead_b13 = n3 * 9 - n3;
+int acc_n15 = 0;
+for (i_y14 = 0; i_y14 < 11; i_y14 = i_y14 + 1) {
+  acc_n15 = acc_n15 + 12 - 10 - 4 + i_y14;
+}
+print(r9);
+print(acc_n15);
+print(q2);
+print(h12);
+print(p11);
+print(n3);
+print(d10);
+print(y1);

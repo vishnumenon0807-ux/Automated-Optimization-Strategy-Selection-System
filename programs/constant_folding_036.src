@@ -1,0 +1,27 @@
+int g1 = 1;
+read(f2);
+read(u3);
+int g4 = 3 + 12 + 9 + 8;
+int d5 = 2 + 7;
+int h6 = g4 + g1 + g1;
+int f7 = 5 + 10 - 12;
+int y8 = 3 - 5 - 9 + 3;
+int h9 = 1 - 7 + 11;
+int n10 = 11 * 12;
+int c11 = 8 + 12;
+int acc_d13 = 0;
+for (i_r12 = 0; i_r12 < 5; i_r12 = i_r12 + 1) {
+  acc_d13 = acc_d13 + 6 + 11 + 11 + i_r12;
+}
+print(acc_d13);
+print(f7);
+print(n10);
+print(u3);
+print(g4);
+print(f2);
+print(h9);
+print(c11);
+print(g1);
+print(h6);
+print(y8);
+print(d5);

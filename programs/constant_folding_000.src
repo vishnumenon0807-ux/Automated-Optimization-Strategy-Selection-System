@@ -1,0 +1,40 @@
+int e1 = 7;
+read(b2);
+read(c3);
+read(y4);
+int b5 = 2 + 11 * 10 + 10;
+int z6 = y4 + 0;
+int u7 = b2 + e1 - b5 + 9;
+int e8 = b2 + e1 - b5 - 2;
+int z9 = 9 * 3 + 10;
+int z10 = z6 * 2;
+int z11 = 5;
+int b12 = z11 - z9;
+b12 = b12 - z11;
+int p13 = 1 * e8;
+int v14 = 5 + 3 * 4;
+int p15 = b2 * z10 - b5 + 5;
+int v16 = b2 * z10 - b5 - 10;
+int u17 = 0;
+if (z6 > 13) {
+  u17 = b5 - b2;
+} else {
+  u17 = c3 * z11;
+}
+print(y4);
+print(p13);
+print(c3);
+print(z9);
+print(e1);
+print(u7);
+print(z6);
+print(v16);
+print(b5);
+print(u17);
+print(b2);
+print(v14);
+print(p15);
+print(e8);
+print(z10);
+print(b12);
+print(z11);

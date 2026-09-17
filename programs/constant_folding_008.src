@@ -1,0 +1,26 @@
+int n1 = 11;
+read(r2);
+read(q3);
+int r4 = 6;
+int q5 = r4 - n1;
+q5 = q5 + r4;
+int w6 = q3 - r2;
+int p7 = w6 + w6 * r4;
+int b8 = 1 - 2 + 5;
+int g9 = 2 * 6 - 5 - 10;
+int b10 = 12 * 12 - 5;
+int acc_a12 = 0;
+for (i_c11 = 0; i_c11 < 30; i_c11 = i_c11 + 1) {
+  acc_a12 = acc_a12 + 4 + 8 * 8 + i_c11;
+}
+print(w6);
+print(acc_a12);
+print(b10);
+print(g9);
+print(n1);
+print(r2);
+print(r4);
+print(q3);
+print(b8);
+print(p7);
+print(q5);

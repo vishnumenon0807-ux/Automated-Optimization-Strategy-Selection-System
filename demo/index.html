@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Optimization Strategy Selection — demo</title>
+<style>
+  :root{
+    --surface:#fcfcfb; --panel:#ffffff; --ink:#0b0b0b; --ink2:#52514e;
+    --muted:#8a8880; --line:#dedcd6; --line2:#edebe6;
+    --cf:#2a78d6; --cp:#eb6834; --cse:#1baf7a; --dce:#eda100;
+    --as:#e87ba4; --licm:#008300; --bad:#e34948;
+    --add-bg:#e7f5ec; --add-ink:#14663a;
+    --del-bg:#fdecec; --del-ink:#9c2b2b;
+    --mono:"SF Mono",Consolas,"Liberation Mono",Menlo,monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--surface);color:var(--ink);
+    font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+  .wrap{max-width:1280px;margin:0 auto;padding:22px 20px 60px}
+
+  header{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;
+    border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:18px}
+  h1{font-size:19px;margin:0;font-weight:650;letter-spacing:-.01em}
+  header p{margin:0;color:var(--ink2);font-size:13px}
+
+  .controls{display:grid;grid-template-columns:1fr 290px;gap:16px;
+    align-items:start;margin-bottom:18px}
+  textarea{width:100%;height:190px;padding:12px 14px;border:1px solid var(--line);
+    border-radius:8px;background:var(--panel);color:var(--ink);
+    font:13px/1.55 var(--mono);resize:vertical}
+  textarea:focus{outline:2px solid var(--cf);outline-offset:-1px;border-color:transparent}
+  .side{display:flex;flex-direction:column;gap:10px}
+  label{font-size:12px;color:var(--ink2);font-weight:600;display:block;margin-bottom:4px}
+  select{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:7px;
+    background:var(--panel);color:var(--ink);font-size:13px}
+  button{padding:10px 16px;border:0;border-radius:7px;background:var(--ink);
+    color:#fff;font-size:13.5px;font-weight:600;cursor:pointer}
+  button:hover{background:#2c2c2a}
+  button:disabled{background:var(--muted);cursor:default}
+
+  .msg{padding:11px 14px;border-radius:8px;font-size:13px;margin-bottom:16px;
+    border:1px solid var(--line)}
+  .msg.err{background:var(--del-bg);border-color:#f2c9c9;color:var(--del-ink);
+    font-family:var(--mono);font-size:12.5px}
+  .msg.info{background:#f3f2ef;color:var(--ink2)}
+  .hidden{display:none!important}
+
+  .summary{display:flex;gap:0;flex-wrap:wrap;border:1px solid var(--line);
+    border-radius:9px;overflow:hidden;background:var(--panel);margin-bottom:16px}
+  .stat{flex:1 1 150px;padding:12px 16px;border-right:1px solid var(--line2)}
+  .stat:last-child{border-right:0}
+  .stat .k{font-size:11px;color:var(--muted);text-transform:uppercase;
+    letter-spacing:.05em;font-weight:650}
+  .stat .v{font-size:19px;font-weight:650;margin-top:3px;letter-spacing:-.02em}
+  .stat .v small{font-size:12px;font-weight:500;color:var(--ink2)}
+  .ok{color:var(--licm)} .no{color:var(--bad)}
+
+  .timeline{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
+  .timeline .lbl{font-size:12px;color:var(--ink2);font-weight:600;margin-right:6px}
+  .chip{min-width:34px;height:30px;padding:0 9px;border:1px solid var(--line);
+    border-radius:7px;background:var(--panel);cursor:pointer;font:600 12px/28px var(--mono);
+    color:var(--ink2);display:inline-flex;align-items:center;gap:5px}
+  .chip:hover{border-color:var(--muted)}
+  .chip .dot{width:8px;height:8px;border-radius:2px;display:inline-block}
+  .chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .chip.fin{font-style:italic}
+
+  .grid{display:grid;grid-template-columns:400px 1fr;gap:16px;align-items:start}
+  .panel{border:1px solid var(--line);border-radius:9px;background:var(--panel);
+    overflow:hidden}
+  .panel h2{margin:0;padding:11px 15px;font-size:12px;text-transform:uppercase;
+    letter-spacing:.05em;color:var(--ink2);border-bottom:1px solid var(--line2);
+    font-weight:650}
+  .panel .body{padding:14px 15px}
+
+  .scores{display:flex;flex-direction:column;gap:7px}
+  .row{display:grid;grid-template-columns:44px 1fr 52px;gap:9px;align-items:center}
+  .row .nm{font:650 12px var(--mono);color:var(--ink2)}
+  /* both must be block: as inline spans they ignore height and width entirely
+     and the bars render as empty tracks */
+  .track{display:block;height:15px;background:var(--line2);border-radius:3px;
+    overflow:hidden}
+  .fill{display:block;height:100%;border-radius:3px;min-width:2px}
+  .row .vl{font:12px var(--mono);color:var(--ink2);text-align:right}
+  .row.sel .nm{color:var(--ink)}
+  .row.sel .vl{color:var(--ink);font-weight:650}
+
+  .verdict{margin-top:14px;padding-top:13px;border-top:1px solid var(--line2);
+    font-size:13px;line-height:1.65}
+  .verdict b{font-weight:650}
+  .tag{display:inline-block;padding:1px 7px;border-radius:5px;font:650 11px var(--mono);
+    color:#fff;vertical-align:1px}
+  .warn{margin-top:9px;padding:8px 11px;background:#fdf4e3;border-radius:6px;
+    font-size:12.5px;color:#7a5a12}
+  .conv{margin-top:9px;padding:8px 11px;background:#f3f2ef;border-radius:6px;
+    font-size:12.5px;color:var(--ink2)}
+
+  .code{margin:0;max-height:560px;overflow:auto;font:12.5px/1.65 var(--mono)}
+  .ln{display:flex;padding:0 14px;white-space:pre}
+  .ln .n{width:34px;flex:none;color:var(--muted);text-align:right;
+    padding-right:12px;user-select:none}
+  .ln.added{background:var(--add-bg);color:var(--add-ink)}
+  .ln.removed{background:var(--del-bg);color:var(--del-ink);text-decoration:line-through;
+    text-decoration-color:#d99}
+  .ln.added .n,.ln.removed .n{color:inherit;opacity:.6}
+  .legend{display:flex;gap:14px;padding:9px 15px;border-top:1px solid var(--line2);
+    font-size:11.5px;color:var(--ink2)}
+  .sw{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;
+    vertical-align:-1px}
+
+  .feat{display:flex;flex-wrap:wrap;gap:5px;margin-top:13px;padding-top:12px;
+    border-top:1px solid var(--line2)}
+  .feat span{font:11.5px var(--mono);background:#f4f3f0;border-radius:5px;
+    padding:2px 7px;color:var(--ink2)}
+  .io{padding:10px 15px;border-top:1px solid var(--line2);font:12px var(--mono);
+    color:var(--ink2)}
+  @media(max-width:980px){.grid,.controls{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Automated Optimization Strategy Selection</h1>
+    <p>Paste a program, then step through each decision the selector makes.</p>
+  </header>
+
+  <div class="controls">
+    <div>
+      <label for="src">Source program</label>
+      <textarea id="src" spellcheck="false"></textarea>
+    </div>
+    <div class="side">
+      <div>
+        <label for="ex">Example</label>
+        <select id="ex"></select>
+      </div>
+      <div>
+        <label for="sel">Selector</label>
+        <select id="sel">
+          <option value="ml_extended">ML — 14 features (best)</option>
+          <option value="ml_required8">ML — 8 required features</option>
+          <option value="rule_based">Rule-based baseline</option>
+          <option value="oracle">Oracle (tries all six)</option>
+        </select>
+      </div>
+      <div>
+        <label for="mode">On a non-improving pick</label>
+        <select id="mode">
+          <option value="fallback">Fall back to next best</option>
+          <option value="strict">Stop (strict)</option>
+        </select>
+      </div>
+      <button id="run">Optimize</button>
+    </div>
+  </div>
+
+  <div id="msg" class="msg hidden"></div>
+
+  <div id="results" class="hidden">
+    <div class="summary" id="summary"></div>
+    <div class="timeline" id="timeline"></div>
+    <div class="grid">
+      <div class="panel">
+        <h2 id="decTitle">Decision</h2>
+        <div class="body">
+          <div class="scores" id="scores"></div>
+          <div class="verdict" id="verdict"></div>
+          <div class="feat" id="feat"></div>
+        </div>
+      </div>
+      <div class="panel">
+        <h2 id="codeTitle">Three-address code</h2>
+        <div class="code" id="code"></div>
+        <div class="legend">
+          <span><i class="sw" style="background:var(--del-bg);border:1px solid #f2c9c9"></i>removed by this pass</span>
+          <span><i class="sw" style="background:var(--add-bg);border:1px solid #bfe3ce"></i>added or rewritten</span>
+        </div>
+        <div class="io" id="io"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const COLORS = {CF:'--cf', CP:'--cp', CSE:'--cse', DCE:'--dce', AS:'--as', LICM:'--licm'};
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const $ = id => document.getElementById(id);
+
+const EXAMPLES = {
+  'Mixed — several strategies compete': `read(a);
+read(b);
+int k = 5;
+int c = 2 * 3 + 4;
+int d = a + 0;
+int s = 0;
+for (i = 0; i < 12; i = i + 1) {
+  int inv = a * b;
+  s = s + inv + k * i;
+}
+int e = a * b + 1;
+int f = a * b + 2;
+print(c); print(d); print(s); print(e); print(f);`,
+
+  'Constant folding': `int a = 2 * 3 + 4;
+int b = 10 * 10 - 50;
+int c = 7 * 8 + 6 * 2;
+read(x);
+int d = a + b + c + x;
+print(d);`,
+
+  'Constant propagation': `int k = 6;
+read(a);
+int u = k * a;
+int v = u + k;
+int w = k + k + a;
+print(u); print(v); print(w);`,
+
+  'Common subexpression': `read(a);
+read(b);
+read(c);
+int u = a * b + c + 1;
+int v = a * b + c - 2;
+int w = a * b + c * 3;
+print(u); print(v); print(w);`,
+
+  'Dead code': `read(a);
+read(b);
+int live = a + b;
+int unused1 = a * 99 + b;
+int unused2 = unused1 * 3 + a;
+int unused3 = unused2 - b;
+print(live);`,
+
+  'Algebraic identities': `read(a);
+read(b);
+int p = a + 0;
+int q = b * 1;
+int r = a * 0 + b;
+int t = a / 1 - 0;
+print(p); print(q); print(r); print(t);`,
+
+  'Loop-invariant code motion': `read(a);
+read(b);
+int s = 0;
+for (i = 0; i < 25; i = i + 1) {
+  int inv = a * b + 7;
+  s = s + inv + i;
+}
+print(s);`
+};
+
+let DATA = null, STEP = 0;
+
+// ---- examples -------------------------------------------------------------
+const exSel = $('ex');
+Object.keys(EXAMPLES).forEach(k => {
+  const o = document.createElement('option'); o.value = k; o.textContent = k;
+  exSel.appendChild(o);
+});
+exSel.onchange = () => { $('src').value = EXAMPLES[exSel.value]; };
+$('src').value = EXAMPLES[Object.keys(EXAMPLES)[0]];
+
+// ---- run ------------------------------------------------------------------
+$('run').onclick = async () => {
+  const btn = $('run');
+  btn.disabled = true; btn.textContent = 'Optimizing…';
+  showMsg('', null);
+  try {
+    const res = await fetch('/api/optimize', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({source: $('src').value, selector: $('sel').value,
+                            mode: $('mode').value})
+    });
+    const data = await res.json();
+    if (!data.ok) {
+      $('results').classList.add('hidden');
+      showMsg(data.error, 'err');
+    } else {
+      DATA = data; STEP = 0;
+      $('results').classList.remove('hidden');
+      renderSummary(); renderTimeline(); renderStep();
+    }
+  } catch (e) {
+    showMsg('Could not reach the server: ' + e.message, 'err');
+  } finally {
+    btn.disabled = false; btn.textContent = 'Optimize';
+  }
+};
+
+function showMsg(text, kind) {
+  const m = $('msg');
+  if (!text) { m.classList.add('hidden'); return; }
+  m.className = 'msg ' + (kind || 'info');
+  m.textContent = text;
+}
+
+// ---- summary --------------------------------------------------------------
+function renderSummary() {
+  const s = DATA.summary, i = DATA.initial, f = DATA.final;
+  const same = JSON.stringify(DATA.output_before) === JSON.stringify(DATA.output_after);
+  $('summary').innerHTML = `
+    <div class="stat"><div class="k">Instructions</div>
+      <div class="v">${i.size} → ${f.size}
+        <small>(${s.size_reduction_pct.toFixed(1)}% smaller)</small></div></div>
+    <div class="stat"><div class="k">Weighted cost</div>
+      <div class="v">${i.cost} → ${f.cost}
+        <small>(${s.cost_reduction_pct.toFixed(1)}% cheaper)</small></div></div>
+    <div class="stat"><div class="k">Iterations</div>
+      <div class="v">${s.n_iterations}
+        <small>${s.n_fallbacks} fallback${s.n_fallbacks === 1 ? '' : 's'}</small></div></div>
+    <div class="stat"><div class="k">Semantics</div>
+      <div class="v ${same && s.correct ? 'ok' : 'no'}">
+        ${same && s.correct ? 'preserved' : 'CHANGED'}
+        <small>output verified</small></div></div>`;
+}
+
+// ---- timeline -------------------------------------------------------------
+function renderTimeline() {
+  const t = $('timeline');
+  t.innerHTML = '<span class="lbl">Iteration</span>';
+  DATA.iterations.forEach((it, idx) => {
+    const b = document.createElement('button');
+    b.className = 'chip' + (idx === STEP ? ' on' : '') + (it.converged ? ' fin' : '');
+    if (it.applied) {
+      b.innerHTML = `<i class="dot" style="background:${css(COLORS[it.applied])}"></i>${it.iteration}`;
+      b.title = `iteration ${it.iteration}: applied ${it.applied}`;
+    } else {
+      b.textContent = 'done';
+      b.title = 'converged — no strategy improves the program further';
+    }
+    b.onclick = () => { STEP = idx; renderTimeline(); renderStep(); };
+    t.appendChild(b);
+  });
+}
+
+// ---- one step -------------------------------------------------------------
+function renderStep() {
+  const it = DATA.iterations[STEP];
+  $('decTitle').textContent = it.converged
+    ? 'Final decision — converged'
+    : `Decision · iteration ${it.iteration}`;
+
+  const max = Math.max(...Object.values(it.scores), 1e-9);
+  $('scores').innerHTML = DATA.strategies.map(k => {
+    const v = it.scores[k], w = Math.max(0, v / max * 100);
+    const on = k === it.selected;
+    return `<div class="row ${on ? 'sel' : ''}" title="${DATA.strategy_names[k]}">
+      <span class="nm">${k}</span>
+      <span class="track"><span class="fill" style="width:${w}%;
+        background:${css(COLORS[k])};opacity:${on ? 1 : .42}"></span></span>
+      <span class="vl">${v.toFixed(2)}</span></div>`;
+  }).join('');
+
+  const chip = k => `<span class="tag" style="background:${css(COLORS[k])}">${k}</span>`;
+  let v = `Highest score: ${chip(it.selected)} <b>${DATA.strategy_names[it.selected]}</b>
+           &nbsp;·&nbsp; confidence <b>${(it.confidence * 100).toFixed(0)}%</b>`;
+  if (it.converged) {
+    v += `<div class="conv">No strategy reduces the cost any further — the loop stops here.</div>`;
+  } else {
+    if (it.fell_back) {
+      v += `<div class="warn">${it.selected} gave no improvement, so the loop fell back to
+            the next-highest scorer, ${it.applied}.</div>`;
+    }
+    const delta = d => d === 0 ? 'unchanged'
+      : (d > 0 ? '−' : '+') + Math.abs(d);
+    const ds = delta(it.size_before - it.size_after);
+    const dc = delta(it.cost_before - it.cost_after);
+    v += `<div style="margin-top:10px">Applied ${chip(it.applied)} —
+      instructions <b>${it.size_before} → ${it.size_after}</b> (${ds}),
+      weighted cost <b>${it.cost_before} → ${it.cost_after}</b> (${dc}).</div>`;
+    if (it.applied === 'LICM' && it.size_before === it.size_after) {
+      v += `<div class="conv">Hoisting moves instructions out of the loop rather
+        than deleting them, so the instruction count does not change — only the
+        loop-weighted cost does. This is why raw instruction count cannot be the
+        objective.</div>`;
+    }
+  }
+  $('verdict').innerHTML = v;
+
+  const F = ['num_statements','num_constants','num_repeated_expr','num_dead_stmts',
+             'num_algebraic_ops','num_loop_ops','num_tmp_vars','const_ratio'];
+  $('feat').innerHTML = F.map(n => {
+    const x = it.features[n];
+    return `<span>${n}=${Number.isInteger(x) ? x : x.toFixed(3)}</span>`;
+  }).join('');
+
+  $('codeTitle').textContent = it.converged
+    ? `Three-address code — final (${DATA.final.size} instructions)`
+    : `Three-address code — what ${it.applied} changed`;
+
+  let n = 0;
+  $('code').innerHTML = it.diff.map(l => {
+    const isLabel = /^\S.*:$/.test(l.text.trim()) && !l.text.includes('=');
+    if (l.status !== 'removed' && !isLabel) n++;
+    const num = (l.status === 'removed' || isLabel) ? '' : n;
+    return `<div class="ln ${l.status}"><span class="n">${num}</span>${escapeHtml(l.text)}</div>`;
+  }).join('');
+  const first = $('code').querySelector('.added,.removed');
+  if (first) first.scrollIntoView({block: 'center'});
+
+  $('io').textContent = `program output (unchanged): [${DATA.output_after.join(', ')}]`;
+}
+
+function escapeHtml(s) {
+  return s.replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+}
+
+document.addEventListener('keydown', e => {
+  if (!DATA || /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)) return;
+  if (e.key === 'ArrowRight' && STEP < DATA.iterations.length - 1) STEP++;
+  else if (e.key === 'ArrowLeft' && STEP > 0) STEP--;
+  else return;
+  e.preventDefault(); renderTimeline(); renderStep();
+});
+</script>
+</body>
+</html>

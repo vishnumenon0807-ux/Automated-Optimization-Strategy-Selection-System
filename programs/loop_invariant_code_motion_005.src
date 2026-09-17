@@ -1,0 +1,22 @@
+int g1 = 13;
+read(a2);
+read(n3);
+read(x4);
+int f5 = a2 * g1 * g1;
+int dead_w6 = x4 - 9 + 7;
+int w7 = n3 - a2 + 11;
+int d8 = 5 + 5 + 7 - 4;
+int dead_r9 = w7 + w7 * 8;
+int acc_c11 = 0;
+for (i_e10 = 0; i_e10 < 12; i_e10 = i_e10 + 1) {
+  int inv_v12 = w7 * d8 + f5;
+  acc_c11 = acc_c11 + inv_v12 + i_e10;
+}
+print(n3);
+print(acc_c11);
+print(x4);
+print(d8);
+print(g1);
+print(w7);
+print(a2);
+print(f5);

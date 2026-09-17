@@ -1,0 +1,44 @@
+int b1 = 7;
+read(a2);
+read(g3);
+int h4 = 9 * 3 * 8 * 4;
+int x5 = a2 - g3;
+int dead_v6 = h4 - x5 * h4;
+int m7 = 12 * 9 * 4;
+int dead_r8 = h4 + g3 + g3;
+int dead_d9 = a2 - g3 - 10;
+int dead_r10 = x5 - 5 - a2;
+int y11 = m7 - m7 * h4 + 4;
+int y12 = m7 - m7 * h4 - 5;
+int m13 = 9;
+int a14 = m13 * g3;
+a14 = a14 - m13;
+int r15 = x5 + a2 + g3 + 10;
+int w16 = x5 + a2 + g3 - 10;
+int dead_e17 = y11 - b1 * g3;
+int m18 = 7;
+int r19 = m18 - a2;
+r19 = r19 - m18;
+int a20 = r15 * 4 + 12;
+int u21 = 0;
+if (a14 > 11) {
+  u21 = x5 - a20;
+} else {
+  u21 = r15 - a14;
+}
+print(m13);
+print(b1);
+print(y11);
+print(u21);
+print(y12);
+print(g3);
+print(w16);
+print(r19);
+print(r15);
+print(a2);
+print(h4);
+print(x5);
+print(a20);
+print(a14);
+print(m18);
+print(m7);

@@ -1,0 +1,1806 @@
+##############################################################################
+# SOURCE constant_folding_000
+##############################################################################
+int e1 = 7;
+read(b2);
+read(c3);
+read(y4);
+int b5 = 2 + 11 * 10 + 10;
+int z6 = y4 + 0;
+int u7 = b2 + e1 - b5 + 9;
+int e8 = b2 + e1 - b5 - 2;
+int z9 = 9 * 3 + 10;
+int z10 = z6 * 2;
+int z11 = 5;
+int b12 = z11 - z9;
+b12 = b12 - z11;
+int p13 = 1 * e8;
+int v14 = 5 + 3 * 4;
+int p15 = b2 * z10 - b5 + 5;
+int v16 = b2 * z10 - b5 - 10;
+int u17 = 0;
+if (z6 > 13) {
+  u17 = b5 - b2;
+} else {
+  u17 = c3 * z11;
+}
+print(y4);
+print(p13);
+print(c3);
+print(z9);
+print(e1);
+print(u7);
+print(z6);
+print(v16);
+print(b5);
+print(u17);
+print(b2);
+print(v14);
+print(p15);
+print(e8);
+print(z10);
+print(b12);
+print(z11);
+
+--- initial three-address code ---
+   1      e1 = 7
+   2      b2 = read()
+   3      c3 = read()
+   4      y4 = read()
+   5      t1 = 11 * 10
+   6      t2 = 2 + t1
+   7      t3 = t2 + 10
+   8      b5 = t3
+   9      t4 = y4 + 0
+  10      z6 = t4
+  11      t5 = b2 + e1
+  12      t6 = t5 - b5
+  13      t7 = t6 + 9
+  14      u7 = t7
+  15      t8 = b2 + e1
+  16      t9 = t8 - b5
+  17      t10 = t9 - 2
+  18      e8 = t10
+  19      t11 = 9 * 3
+  20      t12 = t11 + 10
+  21      z9 = t12
+  22      t13 = z6 * 2
+  23      z10 = t13
+  24      z11 = 5
+  25      t14 = z11 - z9
+  26      b12 = t14
+  27      t15 = b12 - z11
+  28      b12 = t15
+  29      t16 = 1 * e8
+  30      p13 = t16
+  31      t17 = 3 * 4
+  32      t18 = 5 + t17
+  33      v14 = t18
+  34      t19 = b2 * z10
+  35      t20 = t19 - b5
+  36      t21 = t20 + 5
+  37      p15 = t21
+  38      t22 = b2 * z10
+  39      t23 = t22 - b5
+  40      t24 = t23 - 10
+  41      v16 = t24
+  42      u17 = 0
+  43      t25 = z6 > 13
+  44      ifFalse t25 goto L1
+  45      t26 = b5 - b2
+  46      u17 = t26
+  47      goto L2
+      L1:
+  48      t27 = c3 * z11
+  49      u17 = t27
+      L2:
+  50      print y4
+  51      print p13
+  52      print c3
+  53      print z9
+  54      print e1
+  55      print u7
+  56      print z6
+  57      print v16
+  58      print b5
+  59      print u17
+  60      print b2
+  61      print v14
+  62      print p15
+  63      print e8
+  64      print z10
+  65      print b12
+  66      print z11
+
+=== constant_folding_000  (selector: rule_based) ===
+-- iteration 1 --
+   features : const_ratio=0.0909091  max_loop_depth=0  num_algebraic_ops=2  num_const_defs=3
+               num_constants=6  num_dead_stmts=1  num_distinct_vars=44  num_foldable=3
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=7  num_repeated_expr=2
+               num_statements=66  num_tmp_vars=27
+   scores   : CP=2.040  AS=1.500  CSE=1.340  CF=1.200  DCE=0.710  LICM=0.000
+   selected : CP (confidence 0.30)
+   applied  : CP  instructions 66 -> 64 (-2),  weighted cost 66 -> 64 (-2)
+-- iteration 2 --
+   features : const_ratio=0.09375  max_loop_depth=0  num_algebraic_ops=2  num_const_defs=1
+               num_constants=6  num_dead_stmts=1  num_distinct_vars=42  num_foldable=3
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=0  num_repeated_expr=2
+               num_statements=64  num_tmp_vars=27
+   scores   : CP=2.040  AS=1.500  CSE=1.340  CF=1.200  DCE=0.710  LICM=0.000
+   selected : CP (confidence 0.30) [selection CP gave no gain; fell back to AS]
+   applied  : AS  instructions 64 -> 62 (-2),  weighted cost 64 -> 62 (-2)
+-- iteration 3 --
+   features : const_ratio=0.0967742  max_loop_depth=0  num_algebraic_ops=0  num_const_defs=1
+               num_constants=6  num_dead_stmts=1  num_distinct_vars=40  num_foldable=3
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=0  num_repeated_expr=2
+               num_statements=62  num_tmp_vars=25
+   scores   : CP=2.040  CSE=1.340  CF=1.200  DCE=0.710  AS=0.000  LICM=0.000
+   selected : CP (confidence 0.39) [selection CP gave no gain; fell back to CSE]
+   applied  : CSE  instructions 62 -> 60 (-2),  weighted cost 62 -> 60 (-2)
+-- iteration 4 --
+   features : const_ratio=0.1  max_loop_depth=0  num_algebraic_ops=0  num_const_defs=1
+               num_constants=6  num_dead_stmts=1  num_distinct_vars=38  num_foldable=3
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=0  num_repeated_expr=2
+               num_statements=60  num_tmp_vars=23
+   scores   : CP=2.040  CSE=1.340  CF=1.200  DCE=0.710  AS=0.000  LICM=0.000
+   selected : CP (confidence 0.39) [selection CP gave no gain; fell back to CSE]
+   applied  : CSE  instructions 60 -> 58 (-2),  weighted cost 60 -> 58 (-2)
+-- iteration 5 --
+   features : const_ratio=0.103448  max_loop_depth=0  num_algebraic_ops=0  num_const_defs=1
+               num_constants=6  num_dead_stmts=1  num_distinct_vars=36  num_foldable=3
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=0  num_repeated_expr=0
+               num_statements=58  num_tmp_vars=21
+   scores   : CP=2.040  CF=1.200  DCE=0.710  CSE=0.000  AS=0.000  LICM=0.000
+   selected : CP (confidence 0.52) [selection CP gave no gain; fell back to CF]
+   applied  : CF  instructions 58 -> 55 (-3),  weighted cost 58 -> 55 (-3)
+-- iteration 6 --
+   features : const_ratio=0.109091  max_loop_depth=0  num_algebraic_ops=0  num_const_defs=1
+               num_constants=6  num_dead_stmts=1  num_distinct_vars=33  num_foldable=3
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=0  num_repeated_expr=0
+               num_statements=55  num_tmp_vars=18
+   scores   : CP=2.040  CF=1.200  DCE=0.710  CSE=0.000  AS=0.000  LICM=0.000
+   selected : CP (confidence 0.52) [selection CP gave no gain; fell back to CF]
+   applied  : CF  instructions 55 -> 52 (-3),  weighted cost 55 -> 52 (-3)
+-- iteration 7 --
+   features : const_ratio=0.115385  max_loop_depth=0  num_algebraic_ops=0  num_const_defs=3
+               num_constants=6  num_dead_stmts=1  num_distinct_vars=30  num_foldable=1
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=3  num_repeated_expr=0
+               num_statements=52  num_tmp_vars=15
+   scores   : CP=2.040  CF=1.200  DCE=0.710  CSE=0.000  AS=0.000  LICM=0.000
+   selected : CP (confidence 0.52)
+   applied  : CP  instructions 52 -> 50 (-2),  weighted cost 52 -> 50 (-2)
+-- iteration 8 --
+   features : const_ratio=0.14  max_loop_depth=0  num_algebraic_ops=0  num_const_defs=1
+               num_constants=7  num_dead_stmts=1  num_distinct_vars=28  num_foldable=2
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=0  num_repeated_expr=0
+               num_statements=50  num_tmp_vars=15
+   scores   : CP=2.380  CF=1.400  DCE=0.710  CSE=0.000  AS=0.000  LICM=0.000
+   selected : CP (confidence 0.53) [selection CP gave no gain; fell back to CF]
+   applied  : CF  instructions 50 -> 48 (-2),  weighted cost 50 -> 48 (-2)
+-- iteration 9 --
+   features : const_ratio=0.145833  max_loop_depth=0  num_algebraic_ops=0  num_const_defs=3
+               num_constants=7  num_dead_stmts=1  num_distinct_vars=26  num_foldable=0
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=5  num_repeated_expr=0
+               num_statements=48  num_tmp_vars=13
+   scores   : CP=2.380  CF=1.400  DCE=0.710  CSE=0.000  AS=0.000  LICM=0.000
+   selected : CP (confidence 0.53)
+   applied  : CP  instructions 48 -> 47 (-1),  weighted cost 48 -> 47 (-1)
+-- iteration 10 --
+   features : const_ratio=0.170213  max_loop_depth=0  num_algebraic_ops=0  num_const_defs=2
+               num_constants=8  num_dead_stmts=2  num_distinct_vars=25  num_foldable=1
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=0  num_repeated_expr=0
+               num_statements=47  num_tmp_vars=13
+   scores   : CP=2.720  CF=1.600  DCE=1.420  CSE=0.000  AS=0.000  LICM=0.000
+   selected : CP (confidence 0.47) [selection CP gave no gain; fell back to CF]
+   applied  : CF  instructions 47 -> 46 (-1),  weighted cost 47 -> 46 (-1)
+-- iteration 11 --
+   features : const_ratio=0.173913  max_loop_depth=0  num_algebraic_ops=0  num_const_defs=3
+               num_constants=8  num_dead_stmts=2  num_distinct_vars=24  num_foldable=0
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=1  num_repeated_expr=0
+               num_statements=46  num_tmp_vars=12
+   scores   : CP=2.720  CF=1.600  DCE=1.420  CSE=0.000  AS=0.000  LICM=0.000
+   selected : CP (confidence 0.47)
+   applied  : CP  instructions 46 -> 44 (-2),  weighted cost 46 -> 44 (-2)
+-- iteration 12 --
+   features : const_ratio=0.159091  max_loop_depth=0  num_algebraic_ops=0  num_const_defs=1
+               num_constants=7  num_dead_stmts=1  num_distinct_vars=23  num_foldable=0
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=0  num_repeated_expr=0
+               num_statements=44  num_tmp_vars=12
+   scores   : CP=2.380  CF=1.400  DCE=0.710  CSE=0.000  AS=0.000  LICM=0.000
+   selected : CP (confidence 0.53) [selection CP gave no gain; fell back to DCE]
+   applied  : DCE  instructions 44 -> 43 (-1),  weighted cost 44 -> 43 (-1)
+-- iteration 13 --
+   features : const_ratio=0.139535  max_loop_depth=0  num_algebraic_ops=0  num_const_defs=0
+               num_constants=6  num_dead_stmts=0  num_distinct_vars=23  num_foldable=0
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=0  num_repeated_expr=0
+               num_statements=43  num_tmp_vars=12
+   scores   : CP=2.040  CF=1.200  CSE=0.000  DCE=0.000  AS=0.000  LICM=0.000
+   selected : CP (confidence 0.63) -> no strategy improves the code, converged
+   TOTAL    : instructions 66 -> 43 (34.8% smaller), weighted cost 66 -> 43 (34.8% cheaper) in 13 iterations; semantics preserved: True
+
+=== constant_folding_000  (selector: ml_extended) ===
+-- iteration 1 --
+   features : const_ratio=0.0909091  max_loop_depth=0  num_algebraic_ops=2  num_const_defs=3
+               num_constants=6  num_dead_stmts=1  num_distinct_vars=44  num_foldable=3
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=7  num_repeated_expr=2
+               num_statements=66  num_tmp_vars=27
+   scores   : CF=0.997  CP=0.001  CSE=0.001  AS=0.001  DCE=0.000  LICM=0.000
+   selected : CF (confidence 1.00)
+   applied  : CF  instructions 66 -> 63 (-3),  weighted cost 66 -> 63 (-3)
+-- iteration 2 --
+   features : const_ratio=0.0952381  max_loop_depth=0  num_algebraic_ops=2  num_const_defs=3
+               num_constants=6  num_dead_stmts=1  num_distinct_vars=41  num_foldable=3
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=7  num_repeated_expr=2
+               num_statements=63  num_tmp_vars=24
+   scores   : CF=0.997  CP=0.002  AS=0.001  CSE=0.000  DCE=0.000  LICM=0.000
+   selected : CF (confidence 1.00)
+   applied  : CF  instructions 63 -> 60 (-3),  weighted cost 63 -> 60 (-3)
+-- iteration 3 --
+   features : const_ratio=0.1  max_loop_depth=0  num_algebraic_ops=2  num_const_defs=5
+               num_constants=6  num_dead_stmts=1  num_distinct_vars=38  num_foldable=1
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=10  num_repeated_expr=2
+               num_statements=60  num_tmp_vars=21
+   scores   : CP=1.000  AS=0.000  DCE=0.000  CSE=0.000  CF=0.000  LICM=0.000
+   selected : CP (confidence 1.00)
+   applied  : CP  instructions 60 -> 56 (-4),  weighted cost 60 -> 56 (-4)
+-- iteration 4 --
+   features : const_ratio=0.125  max_loop_depth=0  num_algebraic_ops=2  num_const_defs=1
+               num_constants=7  num_dead_stmts=1  num_distinct_vars=34  num_foldable=2
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=0  num_repeated_expr=2
+               num_statements=56  num_tmp_vars=21
+   scores   : CF=1.000  AS=0.000  CP=0.000  CSE=0.000  DCE=0.000  LICM=0.000
+   selected : CF (confidence 1.00)
+   applied  : CF  instructions 56 -> 54 (-2),  weighted cost 56 -> 54 (-2)
+-- iteration 5 --
+   features : const_ratio=0.12963  max_loop_depth=0  num_algebraic_ops=2  num_const_defs=3
+               num_constants=7  num_dead_stmts=1  num_distinct_vars=32  num_foldable=0
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=7  num_repeated_expr=2
+               num_statements=54  num_tmp_vars=19
+   scores   : CP=1.000  AS=0.000  CF=0.000  DCE=0.000  CSE=0.000  LICM=0.000
+   selected : CP (confidence 1.00)
+   applied  : CP  instructions 54 -> 53 (-1),  weighted cost 54 -> 53 (-1)
+-- iteration 6 --
+   features : const_ratio=0.150943  max_loop_depth=0  num_algebraic_ops=2  num_const_defs=2
+               num_constants=8  num_dead_stmts=2  num_distinct_vars=31  num_foldable=1
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=0  num_repeated_expr=2
+               num_statements=53  num_tmp_vars=19
+   scores   : CF=0.993  CP=0.004  AS=0.003  DCE=0.000  CSE=0.000  LICM=0.000
+   selected : CF (confidence 0.99)
+   applied  : CF  instructions 53 -> 52 (-1),  weighted cost 53 -> 52 (-1)
+-- iteration 7 --
+   features : const_ratio=0.153846  max_loop_depth=0  num_algebraic_ops=2  num_const_defs=3
+               num_constants=8  num_dead_stmts=2  num_distinct_vars=30  num_foldable=0
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=1  num_repeated_expr=2
+               num_statements=52  num_tmp_vars=18
+   scores   : CP=0.995  CF=0.003  AS=0.002  DCE=0.000  CSE=0.000  LICM=0.000
+   selected : CP (confidence 1.00)
+   applied  : CP  instructions 52 -> 50 (-2),  weighted cost 52 -> 50 (-2)
+-- iteration 8 --
+   features : const_ratio=0.14  max_loop_depth=0  num_algebraic_ops=2  num_const_defs=1
+               num_constants=7  num_dead_stmts=1  num_distinct_vars=29  num_foldable=0
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=0  num_repeated_expr=2
+               num_statements=50  num_tmp_vars=18
+   scores   : CF=0.523  CP=0.424  AS=0.052  CSE=0.000  DCE=0.000  LICM=0.000
+   selected : CF (confidence 0.52) [selection CF gave no gain; fell back to AS]
+   applied  : AS  instructions 50 -> 48 (-2),  weighted cost 50 -> 48 (-2)
+-- iteration 9 --
+   features : const_ratio=0.145833  max_loop_depth=0  num_algebraic_ops=0  num_const_defs=1
+               num_constants=7  num_dead_stmts=1  num_distinct_vars=27  num_foldable=0
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=0  num_repeated_expr=2
+               num_statements=48  num_tmp_vars=16
+   scores   : CP=0.897  CF=0.076  CSE=0.027  DCE=0.001  LICM=0.000  AS=0.000
+   selected : CP (confidence 0.90) [selection CP gave no gain; fell back to CSE]
+   applied  : CSE  instructions 48 -> 46 (-2),  weighted cost 48 -> 46 (-2)
+-- iteration 10 --
+   features : const_ratio=0.152174  max_loop_depth=0  num_algebraic_ops=0  num_const_defs=1
+               num_constants=7  num_dead_stmts=1  num_distinct_vars=25  num_foldable=0
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=0  num_repeated_expr=2
+               num_statements=46  num_tmp_vars=14
+   scores   : CP=0.921  CF=0.069  CSE=0.010  DCE=0.000  AS=0.000  LICM=0.000
+   selected : CP (confidence 0.92) [selection CP gave no gain; fell back to CSE]
+   applied  : CSE  instructions 46 -> 44 (-2),  weighted cost 46 -> 44 (-2)
+-- iteration 11 --
+   features : const_ratio=0.159091  max_loop_depth=0  num_algebraic_ops=0  num_const_defs=1
+               num_constants=7  num_dead_stmts=1  num_distinct_vars=23  num_foldable=0
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=0  num_repeated_expr=0
+               num_statements=44  num_tmp_vars=12
+   scores   : CP=0.999  CF=0.001  AS=0.000  LICM=0.000  DCE=0.000  CSE=0.000
+   selected : CP (confidence 1.00) [selection CP gave no gain; fell back to DCE]
+   applied  : DCE  instructions 44 -> 43 (-1),  weighted cost 44 -> 43 (-1)
+-- iteration 12 --
+   features : const_ratio=0.139535  max_loop_depth=0  num_algebraic_ops=0  num_const_defs=0
+               num_constants=6  num_dead_stmts=0  num_distinct_vars=23  num_foldable=0
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=0  num_repeated_expr=0
+               num_statements=43  num_tmp_vars=12
+   scores   : CP=0.998  CF=0.002  AS=0.000  CSE=0.000  LICM=0.000  DCE=0.000
+   selected : CP (confidence 1.00) -> no strategy improves the code, converged
+   TOTAL    : instructions 66 -> 43 (34.8% smaller), weighted cost 66 -> 43 (34.8% cheaper) in 12 iterations; semantics preserved: True
+
+--- final optimized three-address code ---
+   1      b2 = read()
+   2      c3 = read()
+   3      y4 = read()
+   4      z6 = y4
+   5      t5 = b2 + 7
+   6      t6 = t5 - 122
+   7      t7 = t6 + 9
+   8      u7 = t7
+   9      t10 = t6 - 2
+  10      e8 = t10
+  11      t13 = z6 * 2
+  12      z10 = t13
+  13      p13 = e8
+  14      t19 = b2 * z10
+  15      t20 = t19 - 122
+  16      t21 = t20 + 5
+  17      p15 = t21
+  18      t24 = t20 - 10
+  19      v16 = t24
+  20      t25 = z6 > 13
+  21      ifFalse t25 goto L1
+  22      t26 = 122 - b2
+  23      u17 = t26
+  24      goto L2
+      L1:
+  25      t27 = c3 * 5
+  26      u17 = t27
+      L2:
+  27      print y4
+  28      print p13
+  29      print c3
+  30      print 37
+  31      print 7
+  32      print u7
+  33      print z6
+  34      print v16
+  35      print 122
+  36      print u17
+  37      print b2
+  38      print 17
+  39      print p15
+  40      print e8
+  41      print z10
+  42      print -37
+  43      print 5
+
+##############################################################################
+# SOURCE constant_folding_004
+##############################################################################
+int b1 = 1;
+read(a2);
+read(x3);
+read(y4);
+int h5 = 5;
+int p6 = h5 * a2;
+p6 = p6 - h5;
+int q7 = 4;
+int b8 = q7 + b1;
+b8 = b8 * q7;
+int m9 = 3 + 2 * 7;
+int b10 = m9 * h5 - y4 + 3;
+int v11 = m9 * h5 - y4 - 3;
+int m12 = b1 - 9 + h5;
+int g13 = 0 + p6;
+int a14 = 7 + 8 - 9;
+int g15 = m9 + h5;
+int c16 = q7 - b1;
+int acc_z18 = 0;
+for (i_c17 = 0; i_c17 < 20; i_c17 = i_c17 + 1) {
+  acc_z18 = acc_z18 + 3 * 12 * 7 + i_c17;
+}
+print(y4);
+print(g13);
+print(a14);
+print(a2);
+print(g15);
+print(b8);
+print(p6);
+print(q7);
+print(m9);
+print(b1);
+print(x3);
+print(v11);
+print(b10);
+print(m12);
+print(acc_z18);
+print(h5);
+print(c16);
+
+--- initial three-address code ---
+   1      b1 = 1
+   2      a2 = read()
+   3      x3 = read()
+   4      y4 = read()
+   5      h5 = 5
+   6      t1 = h5 * a2
+   7      p6 = t1
+   8      t2 = p6 - h5
+   9      p6 = t2
+  10      q7 = 4
+  11      t3 = q7 + b1
+  12      b8 = t3
+  13      t4 = b8 * q7
+  14      b8 = t4
+  15      t5 = 2 * 7
+  16      t6 = 3 + t5
+  17      m9 = t6
+  18      t7 = m9 * h5
+  19      t8 = t7 - y4
+  20      t9 = t8 + 3
+  21      b10 = t9
+  22      t10 = m9 * h5
+  23      t11 = t10 - y4
+  24      t12 = t11 - 3
+  25      v11 = t12
+  26      t13 = b1 - 9
+  27      t14 = t13 + h5
+  28      m12 = t14
+  29      t15 = 0 + p6
+  30      g13 = t15
+  31      t16 = 7 + 8
+  32      t17 = t16 - 9
+  33      a14 = t17
+  34      t18 = m9 + h5
+  35      g15 = t18
+  36      t19 = q7 - b1
+  37      c16 = t19
+  38      acc_z18 = 0
+  39      i_c17 = 0
+      L1:
+  40      t20 = i_c17 < 20
+  41      ifFalse t20 goto L2
+  42      t21 = 3 * 12
+  43      t22 = t21 * 7
+  44      t23 = acc_z18 + t22
+  45      t24 = t23 + i_c17
+  46      acc_z18 = t24
+  47      t25 = i_c17 + 1
+  48      i_c17 = t25
+  49      goto L1
+      L2:
+  50      print y4
+  51      print g13
+  52      print a14
+  53      print a2
+  54      print g15
+  55      print b8
+  56      print p6
+  57      print q7
+  58      print m9
+  59      print b1
+  60      print x3
+  61      print v11
+  62      print b10
+  63      print m12
+  64      print acc_z18
+  65      print h5
+  66      print c16
+
+=== constant_folding_004  (selector: rule_based) ===
+-- iteration 1 --
+   features : const_ratio=0.121212  max_loop_depth=1  num_algebraic_ops=1  num_const_defs=5
+               num_constants=8  num_dead_stmts=0  num_distinct_vars=43  num_foldable=3
+               num_loop_invariant_ops=1  num_loop_ops=10  num_prop_sites=15  num_repeated_expr=1
+               num_statements=66  num_tmp_vars=25
+   scores   : LICM=8.200  CP=6.429  CF=3.782  AS=1.773  CSE=1.584  DCE=0.000
+   selected : LICM (confidence 0.38)
+   applied  : LICM  instructions 66 -> 66 (+0),  weighted cost 156 -> 138 (-18)
+-- iteration 2 --
+   features : const_ratio=0.121212  max_loop_depth=1  num_algebraic_ops=1  num_const_defs=5
+               num_constants=8  num_dead_stmts=0  num_distinct_vars=43  num_foldable=3
+               num_loop_invariant_ops=0  num_loop_ops=8  num_prop_sites=15  num_repeated_expr=1
+               num_statements=66  num_tmp_vars=25
+   scores   : LICM=6.560  CP=5.687  CF=3.345  AS=1.568  CSE=1.401  DCE=0.000
+   selected : LICM (confidence 0.35) [selection LICM gave no gain; fell back to CP]
+   applied  : CP  instructions 66 -> 63 (-3),  weighted cost 138 -> 135 (-3)
+-- iteration 3 --
+   features : const_ratio=0.174603  max_loop_depth=1  num_algebraic_ops=1  num_const_defs=2
+               num_constants=11  num_dead_stmts=0  num_distinct_vars=40  num_foldable=6
+               num_loop_invariant_ops=0  num_loop_ops=8  num_prop_sites=0  num_repeated_expr=1
+               num_statements=63  num_tmp_vars=25
+   scores   : CP=8.014  LICM=6.560  CF=4.714  AS=1.607  CSE=1.436  DCE=0.000
+   selected : CP (confidence 0.36) [selection CP gave no gain; fell back to CF]
+   applied  : CF  instructions 63 -> 57 (-6),  weighted cost 135 -> 129 (-6)
+-- iteration 4 --
+   features : const_ratio=0.192982  max_loop_depth=1  num_algebraic_ops=1  num_const_defs=4
+               num_constants=11  num_dead_stmts=0  num_distinct_vars=34  num_foldable=4
+               num_loop_invariant_ops=0  num_loop_ops=8  num_prop_sites=2  num_repeated_expr=1
+               num_statements=57  num_tmp_vars=19
+   scores   : CP=8.464  LICM=6.560  CF=4.979  AS=1.697  CSE=1.516  DCE=0.000
+   selected : CP (confidence 0.36)
+   applied  : CP  instructions 57 -> 56 (-1),  weighted cost 129 -> 128 (-1)
+-- iteration 5 --
+   features : const_ratio=0.214286  max_loop_depth=1  num_algebraic_ops=1  num_const_defs=3
+               num_constants=12  num_dead_stmts=1  num_distinct_vars=33  num_foldable=5
+               num_loop_invariant_ops=0  num_loop_ops=8  num_prop_sites=0  num_repeated_expr=1
+               num_statements=56  num_tmp_vars=19
+   scores   : CP=9.326  LICM=6.560  CF=5.486  AS=1.714  DCE=1.623  CSE=1.531
+   selected : CP (confidence 0.36) [selection CP gave no gain; fell back to CF]
+   applied  : CF  instructions 56 -> 51 (-5),  weighted cost 128 -> 123 (-5)
+-- iteration 6 --
+   features : const_ratio=0.215686  max_loop_depth=1  num_algebraic_ops=1  num_const_defs=7
+               num_constants=11  num_dead_stmts=1  num_distinct_vars=28  num_foldable=0
+               num_loop_invariant_ops=0  num_loop_ops=8  num_prop_sites=7  num_repeated_expr=1
+               num_statements=51  num_tmp_vars=14
+   scores   : CP=9.020  LICM=6.560  CF=5.306  AS=1.809  DCE=1.712  CSE=1.616
+   selected : CP (confidence 0.35)
+   applied  : CP  instructions 51 -> 46 (-5),  weighted cost 123 -> 118 (-5)
+-- iteration 7 --
+   features : const_ratio=0.282609  max_loop_depth=1  num_algebraic_ops=1  num_const_defs=2
+               num_constants=13  num_dead_stmts=0  num_distinct_vars=24  num_foldable=3
+               num_loop_invariant_ops=0  num_loop_ops=8  num_prop_sites=0  num_repeated_expr=1
+               num_statements=46  num_tmp_vars=14
+   scores   : CP=11.338  CF=6.670  LICM=6.560  AS=1.924  CSE=1.719  DCE=0.000
+   selected : CP (confidence 0.40) [selection CP gave no gain; fell back to CF]
+   applied  : CF  instructions 46 -> 43 (-3),  weighted cost 118 -> 115 (-3)
+-- iteration 8 --
+   features : const_ratio=0.255814  max_loop_depth=1  num_algebraic_ops=1  num_const_defs=3
+               num_constants=11  num_dead_stmts=0  num_distinct_vars=21  num_foldable=0
+               num_loop_invariant_ops=0  num_loop_ops=8  num_prop_sites=1  num_repeated_expr=1
+               num_statements=43  num_tmp_vars=11
+   scores   : CP=10.002  LICM=6.560  CF=5.884  AS=2.006  CSE=1.792  DCE=0.000
+   selected : CP (confidence 0.38)
+   applied  : CP  instructions 43 -> 42 (-1),  weighted cost 115 -> 114 (-1)
+-- iteration 9 --
+   features : const_ratio=0.261905  max_loop_depth=1  num_algebraic_ops=1  num_const_defs=2
+               num_constants=11  num_dead_stmts=0  num_distinct_vars=20  num_foldable=0
+               num_loop_invariant_ops=0  num_loop_ops=8  num_prop_sites=0  num_repeated_expr=1
+               num_statements=42  num_tmp_vars=11
+   scores   : CP=10.151  LICM=6.560  CF=5.971  AS=2.036  CSE=1.819  DCE=0.000
+   selected : CP (confidence 0.38) [selection CP gave no gain; fell back to CSE]
+   applied  : CSE  instructions 42 -> 41 (-1),  weighted cost 114 -> 113 (-1)
+-- iteration 10 --
+   features : const_ratio=0.268293  max_loop_depth=1  num_algebraic_ops=1  num_const_defs=2
+               num_constants=11  num_dead_stmts=0  num_distinct_vars=19  num_foldable=0
+               num_loop_invariant_ops=0  num_loop_ops=8  num_prop_sites=0  num_repeated_expr=0
+               num_statements=41  num_tmp_vars=10
+   scores   : CP=10.308  LICM=6.560  CF=6.063  AS=2.067  CSE=0.000  DCE=0.000
+   selected : CP (confidence 0.41) -> no strategy improves the code, converged
+   TOTAL    : instructions 66 -> 41 (37.9% smaller), weighted cost 156 -> 113 (27.6% cheaper) in 10 iterations; semantics preserved: True
+
+=== constant_folding_004  (selector: ml_extended) ===
+-- iteration 1 --
+   features : const_ratio=0.121212  max_loop_depth=1  num_algebraic_ops=1  num_const_defs=5
+               num_constants=8  num_dead_stmts=0  num_distinct_vars=43  num_foldable=3
+               num_loop_invariant_ops=1  num_loop_ops=10  num_prop_sites=15  num_repeated_expr=1
+               num_statements=66  num_tmp_vars=25
+   scores   : LICM=0.997  CP=0.002  CSE=0.001  CF=0.000  DCE=0.000  AS=0.000
+   selected : LICM (confidence 1.00)
+   applied  : LICM  instructions 66 -> 66 (+0),  weighted cost 156 -> 138 (-18)
+-- iteration 2 --
+   features : const_ratio=0.121212  max_loop_depth=1  num_algebraic_ops=1  num_const_defs=5
+               num_constants=8  num_dead_stmts=0  num_distinct_vars=43  num_foldable=3
+               num_loop_invariant_ops=0  num_loop_ops=8  num_prop_sites=15  num_repeated_expr=1
+               num_statements=66  num_tmp_vars=25
+   scores   : CP=0.828  CF=0.161  LICM=0.008  CSE=0.004  AS=0.000  DCE=0.000
+   selected : CP (confidence 0.83)
+   applied  : CP  instructions 66 -> 63 (-3),  weighted cost 138 -> 135 (-3)
+-- iteration 3 --
+   features : const_ratio=0.174603  max_loop_depth=1  num_algebraic_ops=1  num_const_defs=2
+               num_constants=11  num_dead_stmts=0  num_distinct_vars=40  num_foldable=6
+               num_loop_invariant_ops=0  num_loop_ops=8  num_prop_sites=0  num_repeated_expr=1
+               num_statements=63  num_tmp_vars=25
+   scores   : CF=1.000  AS=0.000  CSE=0.000  CP=0.000  DCE=0.000  LICM=0.000
+   selected : CF (confidence 1.00)
+   applied  : CF  instructions 63 -> 57 (-6),  weighted cost 135 -> 129 (-6)
+-- iteration 4 --
+   features : const_ratio=0.192982  max_loop_depth=1  num_algebraic_ops=1  num_const_defs=4
+               num_constants=11  num_dead_stmts=0  num_distinct_vars=34  num_foldable=4
+               num_loop_invariant_ops=0  num_loop_ops=8  num_prop_sites=2  num_repeated_expr=1
+               num_statements=57  num_tmp_vars=19
+   scores   : CF=1.000  AS=0.000  CP=0.000  CSE=0.000  DCE=0.000  LICM=0.000
+   selected : CF (confidence 1.00)
+   applied  : CF  instructions 57 -> 53 (-4),  weighted cost 129 -> 125 (-4)
+-- iteration 5 --
+   features : const_ratio=0.188679  max_loop_depth=1  num_algebraic_ops=1  num_const_defs=7
+               num_constants=10  num_dead_stmts=0  num_distinct_vars=30  num_foldable=0
+               num_loop_invariant_ops=0  num_loop_ops=8  num_prop_sites=8  num_repeated_expr=1
+               num_statements=53  num_tmp_vars=15
+   scores   : CP=1.000  AS=0.000  CF=0.000  LICM=0.000  DCE=0.000  CSE=0.000
+   selected : CP (confidence 1.00)
+   applied  : CP  instructions 53 -> 49 (-4),  weighted cost 125 -> 121 (-4)
+-- iteration 6 --
+   features : const_ratio=0.285714  max_loop_depth=1  num_algebraic_ops=1  num_const_defs=3
+               num_constants=14  num_dead_stmts=1  num_distinct_vars=26  num_foldable=4
+               num_loop_invariant_ops=0  num_loop_ops=8  num_prop_sites=0  num_repeated_expr=1
+               num_statements=49  num_tmp_vars=15
+   scores   : CF=1.000  AS=0.000  CP=0.000  DCE=0.000  CSE=0.000  LICM=0.000
+   selected : CF (confidence 1.00)
+   applied  : CF  instructions 49 -> 45 (-4),  weighted cost 121 -> 117 (-4)
+-- iteration 7 --
+   features : const_ratio=0.266667  max_loop_depth=1  num_algebraic_ops=1  num_const_defs=5
+               num_constants=12  num_dead_stmts=1  num_distinct_vars=22  num_foldable=0
+               num_loop_invariant_ops=0  num_loop_ops=8  num_prop_sites=2  num_repeated_expr=1
+               num_statements=45  num_tmp_vars=11
+   scores   : CP=0.995  CF=0.005  AS=0.000  DCE=0.000  CSE=0.000  LICM=0.000
+   selected : CP (confidence 1.00)
+   applied  : CP  instructions 45 -> 42 (-3),  weighted cost 117 -> 114 (-3)
+-- iteration 8 --
+   features : const_ratio=0.261905  max_loop_depth=1  num_algebraic_ops=1  num_const_defs=2
+               num_constants=11  num_dead_stmts=0  num_distinct_vars=20  num_foldable=0
+               num_loop_invariant_ops=0  num_loop_ops=8  num_prop_sites=0  num_repeated_expr=1
+               num_statements=42  num_tmp_vars=11
+   scores   : CF=0.794  CP=0.198  AS=0.007  DCE=0.000  CSE=0.000  LICM=0.000
+   selected : CF (confidence 0.79) [selection CF gave no gain; fell back to CSE]
+   applied  : CSE  instructions 42 -> 41 (-1),  weighted cost 114 -> 113 (-1)
+-- iteration 9 --
+   features : const_ratio=0.268293  max_loop_depth=1  num_algebraic_ops=1  num_const_defs=2
+               num_constants=11  num_dead_stmts=0  num_distinct_vars=19  num_foldable=0
+               num_loop_invariant_ops=0  num_loop_ops=8  num_prop_sites=0  num_repeated_expr=0
+               num_statements=41  num_tmp_vars=10
+   scores   : CP=0.694  CF=0.294  AS=0.012  DCE=0.000  LICM=0.000  CSE=0.000
+   selected : CP (confidence 0.69) -> no strategy improves the code, converged
+   TOTAL    : instructions 66 -> 41 (37.9% smaller), weighted cost 156 -> 113 (27.6% cheaper) in 9 iterations; semantics preserved: True
+
+--- final optimized three-address code ---
+   1      a2 = read()
+   2      x3 = read()
+   3      y4 = read()
+   4      t1 = 5 * a2
+   5      p6 = t1
+   6      t2 = p6 - 5
+   7      p6 = t2
+   8      t8 = 85 - y4
+   9      t9 = t8 + 3
+  10      b10 = t9
+  11      t12 = t8 - 3
+  12      v11 = t12
+  13      t15 = 0 + p6
+  14      g13 = t15
+  15      acc_z18 = 0
+  16      i_c17 = 0
+      L3:
+      L1:
+  17      t20 = i_c17 < 20
+  18      ifFalse t20 goto L2
+  19      t23 = acc_z18 + 252
+  20      t24 = t23 + i_c17
+  21      acc_z18 = t24
+  22      t25 = i_c17 + 1
+  23      i_c17 = t25
+  24      goto L1
+      L2:
+  25      print y4
+  26      print g13
+  27      print 6
+  28      print a2
+  29      print 22
+  30      print 20
+  31      print p6
+  32      print 4
+  33      print 17
+  34      print 1
+  35      print x3
+  36      print v11
+  37      print b10
+  38      print -3
+  39      print acc_z18
+  40      print 5
+  41      print 3
+
+##############################################################################
+# SOURCE constant_folding_018
+##############################################################################
+int f1 = 14;
+read(w2);
+read(b3);
+read(p4);
+int n5 = 1 * 11 * 10;
+int p6 = w2 - n5;
+int r7 = p4 - w2 * p4 + 8;
+int h8 = p4 - w2 * p4 - 5;
+int a9 = 5 - 7 + 10;
+int b10 = 3 * 3 - 9;
+int w11 = 9 + 9 * 8;
+int b12 = r7 - p4 * p4 + 8;
+int r13 = r7 - p4 * p4 - 12;
+int g14 = 1 * n5;
+int a15 = 9;
+int r16 = a15 * w2;
+r16 = r16 * a15;
+int dead_q17 = b3 * 9 * w11;
+int w18 = 5;
+int x19 = w18 + r7;
+x19 = x19 + w18;
+int acc_z21 = 0;
+for (i_q20 = 0; i_q20 < 22; i_q20 = i_q20 + 1) {
+  acc_z21 = acc_z21 + b12 * i_q20 + r13 + i_q20;
+  acc_z21 = acc_z21 - (b12 * i_q20 + r13);
+}
+print(acc_z21);
+print(r7);
+print(w18);
+print(a9);
+print(g14);
+print(n5);
+print(a15);
+print(b10);
+print(f1);
+print(p6);
+print(b3);
+print(w2);
+print(r13);
+print(h8);
+print(w11);
+print(x19);
+print(p4);
+print(b12);
+print(r16);
+
+--- initial three-address code ---
+   1      f1 = 14
+   2      w2 = read()
+   3      b3 = read()
+   4      p4 = read()
+   5      t1 = 1 * 11
+   6      t2 = t1 * 10
+   7      n5 = t2
+   8      t3 = w2 - n5
+   9      p6 = t3
+  10      t4 = w2 * p4
+  11      t5 = p4 - t4
+  12      t6 = t5 + 8
+  13      r7 = t6
+  14      t7 = w2 * p4
+  15      t8 = p4 - t7
+  16      t9 = t8 - 5
+  17      h8 = t9
+  18      t10 = 5 - 7
+  19      t11 = t10 + 10
+  20      a9 = t11
+  21      t12 = 3 * 3
+  22      t13 = t12 - 9
+  23      b10 = t13
+  24      t14 = 9 * 8
+  25      t15 = 9 + t14
+  26      w11 = t15
+  27      t16 = p4 * p4
+  28      t17 = r7 - t16
+  29      t18 = t17 + 8
+  30      b12 = t18
+  31      t19 = p4 * p4
+  32      t20 = r7 - t19
+  33      t21 = t20 - 12
+  34      r13 = t21
+  35      t22 = 1 * n5
+  36      g14 = t22
+  37      a15 = 9
+  38      t23 = a15 * w2
+  39      r16 = t23
+  40      t24 = r16 * a15
+  41      r16 = t24
+  42      t25 = b3 * 9
+  43      t26 = t25 * w11
+  44      dead_q17 = t26
+  45      w18 = 5
+  46      t27 = w18 + r7
+  47      x19 = t27
+  48      t28 = x19 + w18
+  49      x19 = t28
+  50      acc_z21 = 0
+  51      i_q20 = 0
+      L1:
+  52      t29 = i_q20 < 22
+  53      ifFalse t29 goto L2
+  54      t30 = b12 * i_q20
+  55      t31 = acc_z21 + t30
+  56      t32 = t31 + r13
+  57      t33 = t32 + i_q20
+  58      acc_z21 = t33
+  59      t34 = b12 * i_q20
+  60      t35 = t34 + r13
+  61      t36 = acc_z21 - t35
+  62      acc_z21 = t36
+  63      t37 = i_q20 + 1
+  64      i_q20 = t37
+  65      goto L1
+      L2:
+  66      print acc_z21
+  67      print r7
+  68      print w18
+  69      print a9
+  70      print g14
+  71      print n5
+  72      print a15
+  73      print b10
+  74      print f1
+  75      print p6
+  76      print b3
+  77      print w2
+  78      print r13
+  79      print h8
+  80      print w11
+  81      print x19
+  82      print p4
+  83      print b12
+  84      print r16
+
+=== constant_folding_018  (selector: rule_based) ===
+-- iteration 1 --
+   features : const_ratio=0.107143  max_loop_depth=1  num_algebraic_ops=2  num_const_defs=5
+               num_constants=9  num_dead_stmts=1  num_distinct_vars=58  num_foldable=4
+               num_loop_invariant_ops=0  num_loop_ops=14  num_prop_sites=7  num_repeated_expr=3
+               num_statements=84  num_tmp_vars=37
+   scores   : LICM=11.480  CP=7.650  CSE=5.025  CF=4.500  AS=3.750  DCE=1.775
+   selected : LICM (confidence 0.34) [selection LICM gave no gain; fell back to CP]
+   applied  : CP  instructions 84 -> 81 (-3),  weighted cost 210 -> 207 (-3)
+-- iteration 2 --
+   features : const_ratio=0.111111  max_loop_depth=1  num_algebraic_ops=2  num_const_defs=2
+               num_constants=9  num_dead_stmts=1  num_distinct_vars=55  num_foldable=4
+               num_loop_invariant_ops=0  num_loop_ops=14  num_prop_sites=0  num_repeated_expr=3
+               num_statements=81  num_tmp_vars=37
+   scores   : LICM=11.480  CP=7.820  CSE=5.137  CF=4.600  AS=3.833  DCE=1.814
+   selected : LICM (confidence 0.33) [selection LICM gave no gain; fell back to CSE]
+   applied  : CSE  instructions 81 -> 78 (-3),  weighted cost 207 -> 195 (-12)
+-- iteration 3 --
+   features : const_ratio=0.115385  max_loop_depth=1  num_algebraic_ops=2  num_const_defs=2
+               num_constants=9  num_dead_stmts=1  num_distinct_vars=52  num_foldable=4
+               num_loop_invariant_ops=0  num_loop_ops=13  num_prop_sites=0  num_repeated_expr=2
+               num_statements=78  num_tmp_vars=34
+   scores   : LICM=10.660  CP=7.650  CF=4.500  AS=3.750  CSE=3.350  DCE=1.775
+   selected : LICM (confidence 0.34) [selection LICM gave no gain; fell back to CF]
+   applied  : CF  instructions 78 -> 74 (-4),  weighted cost 195 -> 191 (-4)
+-- iteration 4 --
+   features : const_ratio=0.121622  max_loop_depth=1  num_algebraic_ops=1  num_const_defs=2
+               num_constants=9  num_dead_stmts=1  num_distinct_vars=48  num_foldable=4
+               num_loop_invariant_ops=0  num_loop_ops=13  num_prop_sites=0  num_repeated_expr=2
+               num_statements=74  num_tmp_vars=30
+   scores   : LICM=10.660  CP=7.898  CF=4.646  CSE=3.459  AS=1.936  DCE=1.833
+   selected : LICM (confidence 0.35) [selection LICM gave no gain; fell back to CF]
+   applied  : CF  instructions 74 -> 70 (-4),  weighted cost 191 -> 187 (-4)
+-- iteration 5 --
+   features : const_ratio=0.128571  max_loop_depth=1  num_algebraic_ops=1  num_const_defs=6
+               num_constants=9  num_dead_stmts=1  num_distinct_vars=44  num_foldable=0
+               num_loop_invariant_ops=0  num_loop_ops=13  num_prop_sites=7  num_repeated_expr=2
+               num_statements=70  num_tmp_vars=26
+   scores   : LICM=10.660  CP=8.175  CF=4.809  CSE=3.580  AS=2.004  DCE=1.897
+   selected : LICM (confidence 0.34) [selection LICM gave no gain; fell back to CP]
+   applied  : CP  instructions 70 -> 66 (-4),  weighted cost 187 -> 183 (-4)
+-- iteration 6 --
+   features : const_ratio=0.151515  max_loop_depth=1  num_algebraic_ops=1  num_const_defs=2
+               num_constants=10  num_dead_stmts=1  num_distinct_vars=40  num_foldable=1
+               num_loop_invariant_ops=0  num_loop_ops=13  num_prop_sites=0  num_repeated_expr=2
+               num_statements=66  num_tmp_vars=26
+   scores   : LICM=10.660  CP=9.427  CF=5.545  CSE=3.715  AS=2.080  DCE=1.969
+   selected : LICM (confidence 0.32) [selection LICM gave no gain; fell back to CF]
+   applied  : CF  instructions 66 -> 65 (-1),  weighted cost 183 -> 182 (-1)
+-- iteration 7 --
+   features : const_ratio=0.153846  max_loop_depth=1  num_algebraic_ops=0  num_const_defs=3
+               num_constants=10  num_dead_stmts=1  num_distinct_vars=39  num_foldable=0
+               num_loop_invariant_ops=0  num_loop_ops=13  num_prop_sites=1  num_repeated_expr=2
+               num_statements=65  num_tmp_vars=25
+   scores   : LICM=10.660  CP=9.520  CF=5.600  CSE=3.752  DCE=1.988  AS=0.000
+   selected : LICM (confidence 0.34) [selection LICM gave no gain; fell back to CP]
+   applied  : CP  instructions 65 -> 64 (-1),  weighted cost 182 -> 181 (-1)
+-- iteration 8 --
+   features : const_ratio=0.15625  max_loop_depth=1  num_algebraic_ops=0  num_const_defs=2
+               num_constants=10  num_dead_stmts=1  num_distinct_vars=38  num_foldable=0
+               num_loop_invariant_ops=0  num_loop_ops=13  num_prop_sites=0  num_repeated_expr=2
+               num_statements=64  num_tmp_vars=25
+   scores   : LICM=10.660  CP=9.616  CF=5.656  CSE=3.790  DCE=2.008  AS=0.000
+   selected : LICM (confidence 0.34) [selection LICM gave no gain; fell back to CSE]
+   applied  : CSE  instructions 64 -> 62 (-2),  weighted cost 181 -> 179 (-2)
+-- iteration 9 --
+   features : const_ratio=0.16129  max_loop_depth=1  num_algebraic_ops=0  num_const_defs=2
+               num_constants=10  num_dead_stmts=1  num_distinct_vars=36  num_foldable=0
+               num_loop_invariant_ops=0  num_loop_ops=13  num_prop_sites=0  num_repeated_expr=0
+               num_statements=62  num_tmp_vars=23
+   scores   : LICM=10.660  CP=9.816  CF=5.774  DCE=2.050  CSE=0.000  AS=0.000
+   selected : LICM (confidence 0.38) [selection LICM gave no gain; fell back to DCE]
+   applied  : DCE  instructions 62 -> 61 (-1),  weighted cost 179 -> 178 (-1)
+-- iteration 10 --
+   features : const_ratio=0.163934  max_loop_depth=1  num_algebraic_ops=0  num_const_defs=2
+               num_constants=10  num_dead_stmts=1  num_distinct_vars=35  num_foldable=0
+               num_loop_invariant_ops=0  num_loop_ops=13  num_prop_sites=0  num_repeated_expr=0
+               num_statements=61  num_tmp_vars=23
+   scores   : LICM=10.660  CP=9.921  CF=5.836  DCE=2.072  CSE=0.000  AS=0.000
+   selected : LICM (confidence 0.37) [selection LICM gave no gain; fell back to DCE]
+   applied  : DCE  instructions 61 -> 60 (-1),  weighted cost 178 -> 177 (-1)
+-- iteration 11 --
+   features : const_ratio=0.166667  max_loop_depth=1  num_algebraic_ops=0  num_const_defs=2
+               num_constants=10  num_dead_stmts=1  num_distinct_vars=34  num_foldable=0
+               num_loop_invariant_ops=0  num_loop_ops=13  num_prop_sites=0  num_repeated_expr=0
+               num_statements=60  num_tmp_vars=22
+   scores   : LICM=10.660  CP=10.030  CF=5.900  DCE=2.095  CSE=0.000  AS=0.000
+   selected : LICM (confidence 0.37) [selection LICM gave no gain; fell back to DCE]
+   applied  : DCE  instructions 60 -> 59 (-1),  weighted cost 177 -> 176 (-1)
+-- iteration 12 --
+   features : const_ratio=0.169492  max_loop_depth=1  num_algebraic_ops=0  num_const_defs=2
+               num_constants=10  num_dead_stmts=0  num_distinct_vars=33  num_foldable=0
+               num_loop_invariant_ops=0  num_loop_ops=13  num_prop_sites=0  num_repeated_expr=0
+               num_statements=59  num_tmp_vars=21
+   scores   : LICM=10.660  CP=10.142  CF=5.966  CSE=0.000  DCE=0.000  AS=0.000
+   selected : LICM (confidence 0.40) -> no strategy improves the code, converged
+   TOTAL    : instructions 84 -> 59 (29.8% smaller), weighted cost 210 -> 176 (16.2% cheaper) in 12 iterations; semantics preserved: True
+
+=== constant_folding_018  (selector: ml_extended) ===
+-- iteration 1 --
+   features : const_ratio=0.107143  max_loop_depth=1  num_algebraic_ops=2  num_const_defs=5
+               num_constants=9  num_dead_stmts=1  num_distinct_vars=58  num_foldable=4
+               num_loop_invariant_ops=0  num_loop_ops=14  num_prop_sites=7  num_repeated_expr=3
+               num_statements=84  num_tmp_vars=37
+   scores   : CSE=0.958  CF=0.040  LICM=0.001  CP=0.000  AS=0.000  DCE=0.000
+   selected : CSE (confidence 0.96)
+   applied  : CSE  instructions 84 -> 81 (-3),  weighted cost 210 -> 198 (-12)
+-- iteration 2 --
+   features : const_ratio=0.111111  max_loop_depth=1  num_algebraic_ops=2  num_const_defs=5
+               num_constants=9  num_dead_stmts=1  num_distinct_vars=55  num_foldable=4
+               num_loop_invariant_ops=0  num_loop_ops=13  num_prop_sites=7  num_repeated_expr=2
+               num_statements=81  num_tmp_vars=34
+   scores   : CF=0.964  CSE=0.035  LICM=0.001  CP=0.000  AS=0.000  DCE=0.000
+   selected : CF (confidence 0.96)
+   applied  : CF  instructions 81 -> 77 (-4),  weighted cost 198 -> 194 (-4)
+-- iteration 3 --
+   features : const_ratio=0.116883  max_loop_depth=1  num_algebraic_ops=1  num_const_defs=5
+               num_constants=9  num_dead_stmts=1  num_distinct_vars=51  num_foldable=4
+               num_loop_invariant_ops=0  num_loop_ops=13  num_prop_sites=7  num_repeated_expr=2
+               num_statements=77  num_tmp_vars=30
+   scores   : CF=0.953  CSE=0.046  LICM=0.000  CP=0.000  DCE=0.000  AS=0.000
+   selected : CF (confidence 0.95)
+   applied  : CF  instructions 77 -> 73 (-4),  weighted cost 194 -> 190 (-4)
+-- iteration 4 --
+   features : const_ratio=0.123288  max_loop_depth=1  num_algebraic_ops=1  num_const_defs=9
+               num_constants=9  num_dead_stmts=1  num_distinct_vars=47  num_foldable=0
+               num_loop_invariant_ops=0  num_loop_ops=13  num_prop_sites=14  num_repeated_expr=2
+               num_statements=73  num_tmp_vars=26
+   scores   : CP=1.000  DCE=0.000  CF=0.000  LICM=0.000  CSE=0.000  AS=0.000
+   selected : CP (confidence 1.00)
+   applied  : CP  instructions 73 -> 66 (-7),  weighted cost 190 -> 183 (-7)
+-- iteration 5 --
+   features : const_ratio=0.151515  max_loop_depth=1  num_algebraic_ops=1  num_const_defs=2
+               num_constants=10  num_dead_stmts=1  num_distinct_vars=40  num_foldable=1
+               num_loop_invariant_ops=0  num_loop_ops=13  num_prop_sites=0  num_repeated_expr=2
+               num_statements=66  num_tmp_vars=26
+   scores   : CF=0.999  CSE=0.001  AS=0.000  CP=0.000  LICM=0.000  DCE=0.000
+   selected : CF (confidence 1.00)
+   applied  : CF  instructions 66 -> 65 (-1),  weighted cost 183 -> 182 (-1)
+-- iteration 6 --
+   features : const_ratio=0.153846  max_loop_depth=1  num_algebraic_ops=0  num_const_defs=3
+               num_constants=10  num_dead_stmts=1  num_distinct_vars=39  num_foldable=0
+               num_loop_invariant_ops=0  num_loop_ops=13  num_prop_sites=1  num_repeated_expr=2
+               num_statements=65  num_tmp_vars=25
+   scores   : CSE=0.618  LICM=0.187  CF=0.138  CP=0.057  DCE=0.000  AS=0.000
+   selected : CSE (confidence 0.62)
+   applied  : CSE  instructions 65 -> 63 (-2),  weighted cost 182 -> 180 (-2)
+-- iteration 7 --
+   features : const_ratio=0.15873  max_loop_depth=1  num_algebraic_ops=0  num_const_defs=3
+               num_constants=10  num_dead_stmts=1  num_distinct_vars=37  num_foldable=0
+               num_loop_invariant_ops=0  num_loop_ops=13  num_prop_sites=1  num_repeated_expr=0
+               num_statements=63  num_tmp_vars=23
+   scores   : CP=0.771  LICM=0.197  CF=0.025  CSE=0.007  AS=0.001  DCE=0.000
+   selected : CP (confidence 0.77)
+   applied  : CP  instructions 63 -> 62 (-1),  weighted cost 180 -> 179 (-1)
+-- iteration 8 --
+   features : const_ratio=0.16129  max_loop_depth=1  num_algebraic_ops=0  num_const_defs=2
+               num_constants=10  num_dead_stmts=1  num_distinct_vars=36  num_foldable=0
+               num_loop_invariant_ops=0  num_loop_ops=13  num_prop_sites=0  num_repeated_expr=0
+               num_statements=62  num_tmp_vars=23
+   scores   : CF=0.587  CP=0.248  LICM=0.137  CSE=0.025  AS=0.003  DCE=0.000
+   selected : CF (confidence 0.59) [selection CF gave no gain; fell back to DCE]
+   applied  : DCE  instructions 62 -> 61 (-1),  weighted cost 179 -> 178 (-1)
+-- iteration 9 --
+   features : const_ratio=0.163934  max_loop_depth=1  num_algebraic_ops=0  num_const_defs=2
+               num_constants=10  num_dead_stmts=1  num_distinct_vars=35  num_foldable=0
+               num_loop_invariant_ops=0  num_loop_ops=13  num_prop_sites=0  num_repeated_expr=0
+               num_statements=61  num_tmp_vars=23
+   scores   : CF=0.642  CP=0.237  LICM=0.098  CSE=0.020  AS=0.003  DCE=0.000
+   selected : CF (confidence 0.64) [selection CF gave no gain; fell back to DCE]
+   applied  : DCE  instructions 61 -> 60 (-1),  weighted cost 178 -> 177 (-1)
+-- iteration 10 --
+   features : const_ratio=0.166667  max_loop_depth=1  num_algebraic_ops=0  num_const_defs=2
+               num_constants=10  num_dead_stmts=1  num_distinct_vars=34  num_foldable=0
+               num_loop_invariant_ops=0  num_loop_ops=13  num_prop_sites=0  num_repeated_expr=0
+               num_statements=60  num_tmp_vars=22
+   scores   : CF=0.666  CP=0.239  LICM=0.075  CSE=0.017  AS=0.003  DCE=0.000
+   selected : CF (confidence 0.67) [selection CF gave no gain; fell back to DCE]
+   applied  : DCE  instructions 60 -> 59 (-1),  weighted cost 177 -> 176 (-1)
+-- iteration 11 --
+   features : const_ratio=0.169492  max_loop_depth=1  num_algebraic_ops=0  num_const_defs=2
+               num_constants=10  num_dead_stmts=0  num_distinct_vars=33  num_foldable=0
+               num_loop_invariant_ops=0  num_loop_ops=13  num_prop_sites=0  num_repeated_expr=0
+               num_statements=59  num_tmp_vars=21
+   scores   : CP=0.654  CF=0.177  LICM=0.152  CSE=0.015  AS=0.001  DCE=0.000
+   selected : CP (confidence 0.65) -> no strategy improves the code, converged
+   TOTAL    : instructions 84 -> 59 (29.8% smaller), weighted cost 210 -> 176 (16.2% cheaper) in 11 iterations; semantics preserved: True
+
+--- final optimized three-address code ---
+   1      w2 = read()
+   2      b3 = read()
+   3      p4 = read()
+   4      t3 = w2 - 110
+   5      p6 = t3
+   6      t4 = w2 * p4
+   7      t5 = p4 - t4
+   8      t6 = t5 + 8
+   9      r7 = t6
+  10      t9 = t5 - 5
+  11      h8 = t9
+  12      t16 = p4 * p4
+  13      t17 = r7 - t16
+  14      t18 = t17 + 8
+  15      b12 = t18
+  16      t21 = t17 - 12
+  17      r13 = t21
+  18      t23 = 9 * w2
+  19      r16 = t23
+  20      t24 = r16 * 9
+  21      r16 = t24
+  22      t27 = 5 + r7
+  23      x19 = t27
+  24      t28 = x19 + 5
+  25      x19 = t28
+  26      acc_z21 = 0
+  27      i_q20 = 0
+      L1:
+  28      t29 = i_q20 < 22
+  29      ifFalse t29 goto L2
+  30      t30 = b12 * i_q20
+  31      t31 = acc_z21 + t30
+  32      t32 = t31 + r13
+  33      t33 = t32 + i_q20
+  34      acc_z21 = t33
+  35      t35 = t30 + r13
+  36      t36 = acc_z21 - t35
+  37      acc_z21 = t36
+  38      t37 = i_q20 + 1
+  39      i_q20 = t37
+  40      goto L1
+      L2:
+  41      print acc_z21
+  42      print r7
+  43      print 5
+  44      print 8
+  45      print 110
+  46      print 110
+  47      print 9
+  48      print 0
+  49      print 14
+  50      print p6
+  51      print b3
+  52      print w2
+  53      print r13
+  54      print h8
+  55      print 81
+  56      print x19
+  57      print p4
+  58      print b12
+  59      print r16
+
+##############################################################################
+# SOURCE constant_folding_021
+##############################################################################
+int f1 = 10;
+read(q2);
+read(b3);
+int z4 = f1 - 0;
+int dead_d5 = z4 + q2 + 4;
+int dead_f6 = q2 - 9 + f1;
+int d7 = q2 - 0;
+int a8 = d7 - 2 + q2;
+int z9 = f1 - b3 - f1 + 5;
+int x10 = f1 - b3 - f1 - 2;
+int d11 = 8;
+int d12 = d11 + z4;
+d12 = d12 + d11;
+int e13 = 9;
+int z14 = e13 * z9;
+z14 = z14 + e13;
+int a15 = z14 * d11 + 6;
+int p16 = 4 - 12 - 10;
+int p17 = 9 + 6 * 3;
+print(p17);
+print(a15);
+print(d11);
+print(b3);
+print(d12);
+print(x10);
+print(d7);
+print(q2);
+print(a8);
+print(f1);
+print(z14);
+print(e13);
+print(z9);
+print(p16);
+print(z4);
+
+--- initial three-address code ---
+   1      f1 = 10
+   2      q2 = read()
+   3      b3 = read()
+   4      t1 = f1 - 0
+   5      z4 = t1
+   6      t2 = z4 + q2
+   7      t3 = t2 + 4
+   8      dead_d5 = t3
+   9      t4 = q2 - 9
+  10      t5 = t4 + f1
+  11      dead_f6 = t5
+  12      t6 = q2 - 0
+  13      d7 = t6
+  14      t7 = d7 - 2
+  15      t8 = t7 + q2
+  16      a8 = t8
+  17      t9 = f1 - b3
+  18      t10 = t9 - f1
+  19      t11 = t10 + 5
+  20      z9 = t11
+  21      t12 = f1 - b3
+  22      t13 = t12 - f1
+  23      t14 = t13 - 2
+  24      x10 = t14
+  25      d11 = 8
+  26      t15 = d11 + z4
+  27      d12 = t15
+  28      t16 = d12 + d11
+  29      d12 = t16
+  30      e13 = 9
+  31      t17 = e13 * z9
+  32      z14 = t17
+  33      t18 = z14 + e13
+  34      z14 = t18
+  35      t19 = z14 * d11
+  36      t20 = t19 + 6
+  37      a15 = t20
+  38      t21 = 4 - 12
+  39      t22 = t21 - 10
+  40      p16 = t22
+  41      t23 = 6 * 3
+  42      t24 = 9 + t23
+  43      p17 = t24
+  44      print p17
+  45      print a15
+  46      print d11
+  47      print b3
+  48      print d12
+  49      print x10
+  50      print d7
+  51      print q2
+  52      print a8
+  53      print f1
+  54      print z14
+  55      print e13
+  56      print z9
+  57      print p16
+  58      print z4
+
+=== constant_folding_021  (selector: rule_based) ===
+-- iteration 1 --
+   features : const_ratio=0.0862069  max_loop_depth=0  num_algebraic_ops=2  num_const_defs=3
+               num_constants=5  num_dead_stmts=2  num_distinct_vars=41  num_foldable=2
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=14  num_repeated_expr=1
+               num_statements=58  num_tmp_vars=24
+   scores   : CP=1.700  AS=1.500  DCE=1.420  CF=1.000  CSE=0.670  LICM=0.000
+   selected : CP (confidence 0.27)
+   applied  : CP  instructions 58 -> 55 (-3),  weighted cost 58 -> 55 (-3)
+-- iteration 2 --
+   features : const_ratio=0.109091  max_loop_depth=0  num_algebraic_ops=2  num_const_defs=0
+               num_constants=6  num_dead_stmts=2  num_distinct_vars=38  num_foldable=3
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=0  num_repeated_expr=1
+               num_statements=55  num_tmp_vars=24
+   scores   : CP=2.040  AS=1.500  DCE=1.420  CF=1.200  CSE=0.670  LICM=0.000
+   selected : CP (confidence 0.30) [selection CP gave no gain; fell back to AS]
+   applied  : AS  instructions 55 -> 53 (-2),  weighted cost 55 -> 53 (-2)
+-- iteration 3 --
+   features : const_ratio=0.113208  max_loop_depth=0  num_algebraic_ops=0  num_const_defs=1
+               num_constants=6  num_dead_stmts=2  num_distinct_vars=36  num_foldable=2
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=3  num_repeated_expr=1
+               num_statements=53  num_tmp_vars=22
+   scores   : CP=2.040  DCE=1.420  CF=1.200  CSE=0.670  AS=0.000  LICM=0.000
+   selected : CP (confidence 0.38)
+   applied  : CP  instructions 53 -> 52 (-1),  weighted cost 53 -> 52 (-1)
+-- iteration 4 --
+   features : const_ratio=0.134615  max_loop_depth=0  num_algebraic_ops=0  num_const_defs=0
+               num_constants=7  num_dead_stmts=2  num_distinct_vars=35  num_foldable=3
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=0  num_repeated_expr=1
+               num_statements=52  num_tmp_vars=22
+   scores   : CP=2.380  DCE=1.420  CF=1.400  CSE=0.670  AS=0.000  LICM=0.000
+   selected : CP (confidence 0.41) [selection CP gave no gain; fell back to DCE]
+   applied  : DCE  instructions 52 -> 50 (-2),  weighted cost 52 -> 50 (-2)
+-- iteration 5 --
+   features : const_ratio=0.14  max_loop_depth=0  num_algebraic_ops=0  num_const_defs=0
+               num_constants=7  num_dead_stmts=2  num_distinct_vars=33  num_foldable=3
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=0  num_repeated_expr=1
+               num_statements=50  num_tmp_vars=22
+   scores   : CP=2.380  DCE=1.420  CF=1.400  CSE=0.670  AS=0.000  LICM=0.000
+   selected : CP (confidence 0.41) [selection CP gave no gain; fell back to DCE]
+   applied  : DCE  instructions 50 -> 48 (-2),  weighted cost 50 -> 48 (-2)
+-- iteration 6 --
+   features : const_ratio=0.145833  max_loop_depth=0  num_algebraic_ops=0  num_const_defs=0
+               num_constants=7  num_dead_stmts=2  num_distinct_vars=31  num_foldable=3
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=0  num_repeated_expr=1
+               num_statements=48  num_tmp_vars=20
+   scores   : CP=2.380  DCE=1.420  CF=1.400  CSE=0.670  AS=0.000  LICM=0.000
+   selected : CP (confidence 0.41) [selection CP gave no gain; fell back to DCE]
+   applied  : DCE  instructions 48 -> 46 (-2),  weighted cost 48 -> 46 (-2)
+-- iteration 7 --
+   features : const_ratio=0.152174  max_loop_depth=0  num_algebraic_ops=0  num_const_defs=0
+               num_constants=7  num_dead_stmts=0  num_distinct_vars=29  num_foldable=3
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=0  num_repeated_expr=1
+               num_statements=46  num_tmp_vars=18
+   scores   : CP=2.380  CF=1.400  CSE=0.670  DCE=0.000  AS=0.000  LICM=0.000
+   selected : CP (confidence 0.53) [selection CP gave no gain; fell back to CF]
+   applied  : CF  instructions 46 -> 43 (-3),  weighted cost 46 -> 43 (-3)
+-- iteration 8 --
+   features : const_ratio=0.162791  max_loop_depth=0  num_algebraic_ops=0  num_const_defs=1
+               num_constants=7  num_dead_stmts=0  num_distinct_vars=26  num_foldable=2
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=1  num_repeated_expr=1
+               num_statements=43  num_tmp_vars=15
+   scores   : CP=2.380  CF=1.400  CSE=0.670  DCE=0.000  AS=0.000  LICM=0.000
+   selected : CP (confidence 0.53) [selection CP gave no gain; fell back to CF]
+   applied  : CF  instructions 43 -> 41 (-2),  weighted cost 43 -> 41 (-2)
+-- iteration 9 --
+   features : const_ratio=0.170732  max_loop_depth=0  num_algebraic_ops=0  num_const_defs=3
+               num_constants=7  num_dead_stmts=0  num_distinct_vars=24  num_foldable=0
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=3  num_repeated_expr=1
+               num_statements=41  num_tmp_vars=13
+   scores   : CP=2.380  CF=1.400  CSE=0.670  DCE=0.000  AS=0.000  LICM=0.000
+   selected : CP (confidence 0.53)
+   applied  : CP  instructions 41 -> 39 (-2),  weighted cost 41 -> 39 (-2)
+-- iteration 10 --
+   features : const_ratio=0.205128  max_loop_depth=0  num_algebraic_ops=0  num_const_defs=1
+               num_constants=8  num_dead_stmts=1  num_distinct_vars=22  num_foldable=1
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=0  num_repeated_expr=1
+               num_statements=39  num_tmp_vars=13
+   scores   : CP=2.720  CF=1.600  DCE=0.710  CSE=0.670  AS=0.000  LICM=0.000
+   selected : CP (confidence 0.48) [selection CP gave no gain; fell back to CF]
+   applied  : CF  instructions 39 -> 38 (-1),  weighted cost 39 -> 38 (-1)
+-- iteration 11 --
+   features : const_ratio=0.210526  max_loop_depth=0  num_algebraic_ops=0  num_const_defs=2
+               num_constants=8  num_dead_stmts=1  num_distinct_vars=21  num_foldable=0
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=1  num_repeated_expr=1
+               num_statements=38  num_tmp_vars=12
+   scores   : CP=2.720  CF=1.600  DCE=0.710  CSE=0.670  AS=0.000  LICM=0.000
+   selected : CP (confidence 0.48)
+   applied  : CP  instructions 38 -> 36 (-2),  weighted cost 38 -> 36 (-2)
+-- iteration 12 --
+   features : const_ratio=0.194444  max_loop_depth=0  num_algebraic_ops=0  num_const_defs=0
+               num_constants=7  num_dead_stmts=0  num_distinct_vars=20  num_foldable=0
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=0  num_repeated_expr=1
+               num_statements=36  num_tmp_vars=12
+   scores   : CP=2.380  CF=1.400  CSE=0.670  DCE=0.000  AS=0.000  LICM=0.000
+   selected : CP (confidence 0.53) [selection CP gave no gain; fell back to CSE]
+   applied  : CSE  instructions 36 -> 35 (-1),  weighted cost 36 -> 35 (-1)
+-- iteration 13 --
+   features : const_ratio=0.2  max_loop_depth=0  num_algebraic_ops=0  num_const_defs=0
+               num_constants=7  num_dead_stmts=0  num_distinct_vars=19  num_foldable=0
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=0  num_repeated_expr=1
+               num_statements=35  num_tmp_vars=11
+   scores   : CP=2.380  CF=1.400  CSE=0.670  DCE=0.000  AS=0.000  LICM=0.000
+   selected : CP (confidence 0.53) [selection CP gave no gain; fell back to CSE]
+   applied  : CSE  instructions 35 -> 34 (-1),  weighted cost 35 -> 34 (-1)
+-- iteration 14 --
+   features : const_ratio=0.205882  max_loop_depth=0  num_algebraic_ops=0  num_const_defs=0
+               num_constants=7  num_dead_stmts=0  num_distinct_vars=18  num_foldable=0
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=0  num_repeated_expr=0
+               num_statements=34  num_tmp_vars=10
+   scores   : CP=2.380  CF=1.400  CSE=0.000  DCE=0.000  AS=0.000  LICM=0.000
+   selected : CP (confidence 0.63) -> no strategy improves the code, converged
+   TOTAL    : instructions 58 -> 34 (41.4% smaller), weighted cost 58 -> 34 (41.4% cheaper) in 14 iterations; semantics preserved: True
+
+=== constant_folding_021  (selector: ml_extended) ===
+-- iteration 1 --
+   features : const_ratio=0.0862069  max_loop_depth=0  num_algebraic_ops=2  num_const_defs=3
+               num_constants=5  num_dead_stmts=2  num_distinct_vars=41  num_foldable=2
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=14  num_repeated_expr=1
+               num_statements=58  num_tmp_vars=24
+   scores   : CP=0.989  AS=0.007  CF=0.002  DCE=0.001  CSE=0.000  LICM=0.000
+   selected : CP (confidence 0.99)
+   applied  : CP  instructions 58 -> 55 (-3),  weighted cost 58 -> 55 (-3)
+-- iteration 2 --
+   features : const_ratio=0.109091  max_loop_depth=0  num_algebraic_ops=2  num_const_defs=0
+               num_constants=6  num_dead_stmts=2  num_distinct_vars=38  num_foldable=3
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=0  num_repeated_expr=1
+               num_statements=55  num_tmp_vars=24
+   scores   : CF=1.000  AS=0.000  CSE=0.000  DCE=0.000  CP=0.000  LICM=0.000
+   selected : CF (confidence 1.00)
+   applied  : CF  instructions 55 -> 52 (-3),  weighted cost 55 -> 52 (-3)
+-- iteration 3 --
+   features : const_ratio=0.115385  max_loop_depth=0  num_algebraic_ops=1  num_const_defs=1
+               num_constants=6  num_dead_stmts=2  num_distinct_vars=35  num_foldable=2
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=3  num_repeated_expr=1
+               num_statements=52  num_tmp_vars=21
+   scores   : CF=0.999  AS=0.001  DCE=0.000  CSE=0.000  CP=0.000  LICM=0.000
+   selected : CF (confidence 1.00)
+   applied  : CF  instructions 52 -> 50 (-2),  weighted cost 52 -> 50 (-2)
+-- iteration 4 --
+   features : const_ratio=0.12  max_loop_depth=0  num_algebraic_ops=1  num_const_defs=3
+               num_constants=6  num_dead_stmts=2  num_distinct_vars=33  num_foldable=0
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=5  num_repeated_expr=1
+               num_statements=50  num_tmp_vars=19
+   scores   : CP=0.999  DCE=0.001  AS=0.000  LICM=0.000  CF=0.000  CSE=0.000
+   selected : CP (confidence 1.00)
+   applied  : CP  instructions 50 -> 47 (-3),  weighted cost 50 -> 47 (-3)
+-- iteration 5 --
+   features : const_ratio=0.148936  max_loop_depth=0  num_algebraic_ops=1  num_const_defs=0
+               num_constants=7  num_dead_stmts=2  num_distinct_vars=30  num_foldable=1
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=0  num_repeated_expr=1
+               num_statements=47  num_tmp_vars=19
+   scores   : CF=0.999  AS=0.000  DCE=0.000  CP=0.000  CSE=0.000  LICM=0.000
+   selected : CF (confidence 1.00)
+   applied  : CF  instructions 47 -> 46 (-1),  weighted cost 47 -> 46 (-1)
+-- iteration 6 --
+   features : const_ratio=0.152174  max_loop_depth=0  num_algebraic_ops=1  num_const_defs=1
+               num_constants=7  num_dead_stmts=2  num_distinct_vars=29  num_foldable=0
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=1  num_repeated_expr=1
+               num_statements=46  num_tmp_vars=18
+   scores   : CP=0.603  CF=0.336  AS=0.044  DCE=0.018  CSE=0.000  LICM=0.000
+   selected : CP (confidence 0.60) [selection CP gave no gain; fell back to AS]
+   applied  : AS  instructions 46 -> 45 (-1),  weighted cost 46 -> 45 (-1)
+-- iteration 7 --
+   features : const_ratio=0.155556  max_loop_depth=0  num_algebraic_ops=0  num_const_defs=1
+               num_constants=7  num_dead_stmts=2  num_distinct_vars=28  num_foldable=0
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=1  num_repeated_expr=1
+               num_statements=45  num_tmp_vars=17
+   scores   : CP=0.827  CF=0.116  DCE=0.053  AS=0.003  CSE=0.001  LICM=0.000
+   selected : CP (confidence 0.83) [selection CP gave no gain; fell back to DCE]
+   applied  : DCE  instructions 45 -> 43 (-2),  weighted cost 45 -> 43 (-2)
+-- iteration 8 --
+   features : const_ratio=0.162791  max_loop_depth=0  num_algebraic_ops=0  num_const_defs=1
+               num_constants=7  num_dead_stmts=2  num_distinct_vars=26  num_foldable=0
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=1  num_repeated_expr=1
+               num_statements=43  num_tmp_vars=17
+   scores   : CP=0.818  CF=0.154  DCE=0.026  AS=0.002  CSE=0.001  LICM=0.000
+   selected : CP (confidence 0.82) [selection CP gave no gain; fell back to DCE]
+   applied  : DCE  instructions 43 -> 41 (-2),  weighted cost 43 -> 41 (-2)
+-- iteration 9 --
+   features : const_ratio=0.170732  max_loop_depth=0  num_algebraic_ops=0  num_const_defs=1
+               num_constants=7  num_dead_stmts=2  num_distinct_vars=24  num_foldable=0
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=1  num_repeated_expr=1
+               num_statements=41  num_tmp_vars=15
+   scores   : CP=0.828  CF=0.153  DCE=0.017  AS=0.002  CSE=0.000  LICM=0.000
+   selected : CP (confidence 0.83) [selection CP gave no gain; fell back to DCE]
+   applied  : DCE  instructions 41 -> 39 (-2),  weighted cost 41 -> 39 (-2)
+-- iteration 10 --
+   features : const_ratio=0.179487  max_loop_depth=0  num_algebraic_ops=0  num_const_defs=1
+               num_constants=7  num_dead_stmts=0  num_distinct_vars=22  num_foldable=0
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=1  num_repeated_expr=1
+               num_statements=39  num_tmp_vars=13
+   scores   : CP=0.999  CF=0.001  AS=0.000  CSE=0.000  LICM=0.000  DCE=0.000
+   selected : CP (confidence 1.00) [selection CP gave no gain; fell back to CSE]
+   applied  : CSE  instructions 39 -> 38 (-1),  weighted cost 39 -> 38 (-1)
+-- iteration 11 --
+   features : const_ratio=0.184211  max_loop_depth=0  num_algebraic_ops=0  num_const_defs=1
+               num_constants=7  num_dead_stmts=0  num_distinct_vars=21  num_foldable=0
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=1  num_repeated_expr=1
+               num_statements=38  num_tmp_vars=12
+   scores   : CP=0.999  CF=0.001  AS=0.000  CSE=0.000  LICM=0.000  DCE=0.000
+   selected : CP (confidence 1.00) [selection CP gave no gain; fell back to CSE]
+   applied  : CSE  instructions 38 -> 37 (-1),  weighted cost 38 -> 37 (-1)
+-- iteration 12 --
+   features : const_ratio=0.189189  max_loop_depth=0  num_algebraic_ops=0  num_const_defs=1
+               num_constants=7  num_dead_stmts=0  num_distinct_vars=20  num_foldable=0
+               num_loop_invariant_ops=0  num_loop_ops=0  num_prop_sites=1  num_repeated_expr=0
+               num_statements=37  num_tmp_vars=11
+   scores   : CP=1.000  CF=0.000  AS=0.000  LICM=0.000  CSE=0.000  DCE=0.000
+   selected : CP (confidence 1.00) -> no strategy improves the code, converged
+   TOTAL    : instructions 58 -> 37 (36.2% smaller), weighted cost 58 -> 37 (36.2% cheaper) in 12 iterations; semantics preserved: True
+
+--- final optimized three-address code ---
+   1      q2 = read()
+   2      b3 = read()
+   3      d7 = q2
+   4      t7 = d7 - 2
+   5      t8 = t7 + q2
+   6      a8 = t8
+   7      t9 = 10 - b3
+   8      t10 = t9 - 10
+   9      t11 = t10 + 5
+  10      z9 = t11
+  11      t14 = t10 - 2
+  12      x10 = t14
+  13      d12 = 18
+  14      t16 = d12 + 8
+  15      d12 = t16
+  16      t17 = 9 * z9
+  17      z14 = t17
+  18      t18 = z14 + 9
+  19      z14 = t18
+  20      t19 = z14 * 8
+  21      t20 = t19 + 6
+  22      a15 = t20
+  23      print 27
+  24      print a15
+  25      print 8
+  26      print b3
+  27      print d12
+  28      print x10
+  29      print d7
+  30      print q2
+  31      print a8
+  32      print 10
+  33      print z14
+  34      print 9
+  35      print z9
+  36      print -18
+  37      print 10
+
+##############################################################################
+# SOURCE constant_propagation_023
+##############################################################################
+int a1 = 7;
+int v2 = 12;
+read(p3);
+int c4 = 2;
+int n5 = c4 * v2;
+n5 = n5 * c4;
+int f6 = 8;
+int r7 = f6 + a1;
+r7 = r7 * f6;
+int v8 = 9;
+int n9 = v8 - c4;
+n9 = n9 + v8;
+int u10 = r7 - v8;
+int r11 = 6;
+int r12 = r11 + u10;
+r12 = r12 + r11;
+int v13 = 5;
+int m14 = v13 + v8;
+m14 = m14 - v13;
+int m15 = 3 * 9 + 7;
+int dead_e16 = n5 + v2 - v2;
+int b17 = 8 * 5 * 8 * 2;
+int acc_x19 = 0;
+for (i_n18 = 0; i_n18 < 26; i_n18 = i_n18 + 1) {
+  int dead_a20 = v13 - p3 + i_n18;
+  acc_x19 = acc_x19 + i_n18;
+  for (j_e21 = 0; j_e21 < 3; j_e21 = j_e21 + 1) {
+    acc_x19 = acc_x19 + j_e21;
+  }
+}
+print(f6);
+print(a1);
+print(v8);
+print(r11);
+print(r12);
+print(v13);
+print(m14);
+print(r7);
+print(n5);
+print(b17);
+print(v2);
+print(m15);
+print(u10);
+print(c4);
+print(n9);
+print(acc_x19);
+print(p3);
+
+--- initial three-address code ---
+   1      a1 = 7
+   2      v2 = 12
+   3      p3 = read()
+   4      c4 = 2
+   5      t1 = c4 * v2
+   6      n5 = t1
+   7      t2 = n5 * c4
+   8      n5 = t2
+   9      f6 = 8
+  10      t3 = f6 + a1
+  11      r7 = t3
+  12      t4 = r7 * f6
+  13      r7 = t4
+  14      v8 = 9
+  15      t5 = v8 - c4
+  16      n9 = t5
+  17      t6 = n9 + v8
+  18      n9 = t6
+  19      t7 = r7 - v8
+  20      u10 = t7
+  21      r11 = 6
+  22      t8 = r11 + u10
+  23      r12 = t8
+  24      t9 = r12 + r11
+  25      r12 = t9
+  26      v13 = 5
+  27      t10 = v13 + v8
+  28      m14 = t10
+  29      t11 = m14 - v13
+  30      m14 = t11
+  31      t12 = 3 * 9
+  32      t13 = t12 + 7
+  33      m15 = t13
+  34      t14 = n5 + v2
+  35      t15 = t14 - v2
+  36      dead_e16 = t15
+  37      t16 = 8 * 5
+  38      t17 = t16 * 8
+  39      t18 = t17 * 2
+  40      b17 = t18
+  41      acc_x19 = 0
+  42      i_n18 = 0
+      L1:
+  43      t19 = i_n18 < 26
+  44      ifFalse t19 goto L2
+  45      t20 = v13 - p3
+  46      t21 = t20 + i_n18
+  47      dead_a20 = t21
+  48      t22 = acc_x19 + i_n18
+  49      acc_x19 = t22
+  50      j_e21 = 0
+      L3:
+  51      t23 = j_e21 < 3
+  52      ifFalse t23 goto L4
+  53      t24 = acc_x19 + j_e21
+  54      acc_x19 = t24
+  55      t25 = j_e21 + 1
+  56      j_e21 = t25
+  57      goto L3
+      L4:
+  58      t26 = i_n18 + 1
+  59      i_n18 = t26
+  60      goto L1
+      L2:
+  61      print f6
+  62      print a1
+  63      print v8
+  64      print r11
+  65      print r12
+  66      print v13
+  67      print m14
+  68      print r7
+  69      print n5
+  70      print b17
+  71      print v2
+  72      print m15
+  73      print u10
+  74      print c4
+  75      print n9
+  76      print acc_x19
+  77      print p3
+
+=== constant_propagation_023  (selector: rule_based) ===
+-- iteration 1 --
+   features : const_ratio=0.155844  max_loop_depth=2  num_algebraic_ops=0  num_const_defs=10
+               num_constants=12  num_dead_stmts=2  num_distinct_vars=47  num_foldable=2
+               num_loop_invariant_ops=2  num_loop_ops=18  num_prop_sites=25  num_repeated_expr=0
+               num_statements=77  num_tmp_vars=26
+   scores   : LICM=14.760  CP=12.664  CF=7.449  DCE=4.408  CSE=0.000  AS=0.000
+   selected : LICM (confidence 0.38) [selection LICM gave no gain; fell back to CP]
+   applied  : CP  instructions 77 -> 70 (-7),  weighted cost 869 -> 862 (-7)
+-- iteration 2 --
+   features : const_ratio=0.228571  max_loop_depth=2  num_algebraic_ops=0  num_const_defs=3
+               num_constants=16  num_dead_stmts=2  num_distinct_vars=40  num_foldable=6
+               num_loop_invariant_ops=2  num_loop_ops=18  num_prop_sites=0  num_repeated_expr=0
+               num_statements=70  num_tmp_vars=26
+   scores   : CP=18.030  LICM=14.760  CF=10.606  DCE=4.706  CSE=0.000  AS=0.000
+   selected : CP (confidence 0.37) [selection CP gave no gain; fell back to CF]
+   applied  : CF  instructions 70 -> 64 (-6),  weighted cost 862 -> 856 (-6)
+-- iteration 3 --
+   features : const_ratio=0.25  max_loop_depth=2  num_algebraic_ops=0  num_const_defs=7
+               num_constants=16  num_dead_stmts=2  num_distinct_vars=34  num_foldable=2
+               num_loop_invariant_ops=2  num_loop_ops=18  num_prop_sites=4  num_repeated_expr=0
+               num_statements=64  num_tmp_vars=20
+   scores   : CP=19.210  LICM=14.760  CF=11.300  DCE=5.014  CSE=0.000  AS=0.000
+   selected : CP (confidence 0.38) [selection CP gave no gain; fell back to CF]
+   applied  : CF  instructions 64 -> 62 (-2),  weighted cost 856 -> 854 (-2)
+-- iteration 4 --
+   features : const_ratio=0.258065  max_loop_depth=2  num_algebraic_ops=0  num_const_defs=8
+               num_constants=16  num_dead_stmts=2  num_distinct_vars=32  num_foldable=1
+               num_loop_invariant_ops=2  num_loop_ops=18  num_prop_sites=5  num_repeated_expr=0
+               num_statements=62  num_tmp_vars=18
+   scores   : CP=19.654  LICM=14.760  CF=11.561  DCE=5.130  CSE=0.000  AS=0.000
+   selected : CP (confidence 0.38)
+   applied  : CP  instructions 62 -> 61 (-1),  weighted cost 854 -> 853 (-1)
+-- iteration 5 --
+   features : const_ratio=0.327869  max_loop_depth=2  num_algebraic_ops=0  num_const_defs=7
+               num_constants=20  num_dead_stmts=6  num_distinct_vars=31  num_foldable=5
+               num_loop_invariant_ops=2  num_loop_ops=18  num_prop_sites=0  num_repeated_expr=0
+               num_statements=61  num_tmp_vars=18
+   scores   : CP=24.859  DCE=15.573  LICM=14.760  CF=14.623  CSE=0.000  AS=0.000
+   selected : CP (confidence 0.36) [selection CP gave no gain; fell back to DCE]
+   applied  : DCE  instructions 61 -> 55 (-6),  weighted cost 853 -> 838 (-15)
+-- iteration 6 --
+   features : const_ratio=0.290909  max_loop_depth=2  num_algebraic_ops=0  num_const_defs=3
+               num_constants=16  num_dead_stmts=2  num_distinct_vars=29  num_foldable=5
+               num_loop_invariant_ops=2  num_loop_ops=17  num_prop_sites=0  num_repeated_expr=0
+               num_statements=55  num_tmp_vars=18
+   scores   : CP=20.573  LICM=13.940  CF=12.102  DCE=5.370  CSE=0.000  AS=0.000
+   selected : CP (confidence 0.40) [selection CP gave no gain; fell back to CF]
+   applied  : CF  instructions 55 -> 50 (-5),  weighted cost 838 -> 833 (-5)
+-- iteration 7 --
+   features : const_ratio=0.32  max_loop_depth=2  num_algebraic_ops=0  num_const_defs=8
+               num_constants=16  num_dead_stmts=2  num_distinct_vars=24  num_foldable=0
+               num_loop_invariant_ops=2  num_loop_ops=17  num_prop_sites=7  num_repeated_expr=0
+               num_statements=50  num_tmp_vars=13
+   scores   : CP=22.086  LICM=13.940  CF=12.992  DCE=5.765  CSE=0.000  AS=0.000
+   selected : CP (confidence 0.40)
+   applied  : CP  instructions 50 -> 45 (-5),  weighted cost 833 -> 828 (-5)
+-- iteration 8 --
+   features : const_ratio=0.4  max_loop_depth=2  num_algebraic_ops=0  num_const_defs=3
+               num_constants=18  num_dead_stmts=2  num_distinct_vars=19  num_foldable=2
+               num_loop_invariant_ops=2  num_loop_ops=17  num_prop_sites=0  num_repeated_expr=0
+               num_statements=45  num_tmp_vars=13
+   scores   : CP=26.928  CF=15.840  LICM=13.940  DCE=6.248  CSE=0.000  AS=0.000
+   selected : CP (confidence 0.43) [selection CP gave no gain; fell back to CF]
+   applied  : CF  instructions 45 -> 43 (-2),  weighted cost 828 -> 826 (-2)
+-- iteration 9 --
+   features : const_ratio=0.418605  max_loop_depth=2  num_algebraic_ops=0  num_const_defs=4
+               num_constants=18  num_dead_stmts=2  num_distinct_vars=17  num_foldable=1
+               num_loop_invariant_ops=2  num_loop_ops=17  num_prop_sites=2  num_repeated_expr=0
+               num_statements=43  num_tmp_vars=11
+   scores   : CP=27.896  CF=16.409  LICM=13.940  DCE=6.473  CSE=0.000  AS=0.000
+   selected : CP (confidence 0.43)
+   applied  : CP  instructions 43 -> 42 (-1),  weighted cost 826 -> 825 (-1)
+-- iteration 10 --
+   features : const_ratio=0.452381  max_loop_depth=2  num_algebraic_ops=0  num_const_defs=3
+               num_constants=19  num_dead_stmts=2  num_distinct_vars=16  num_foldable=2
+               num_loop_invariant_ops=2  num_loop_ops=17  num_prop_sites=0  num_repeated_expr=0
+               num_statements=42  num_tmp_vars=11
+   scores   : CP=29.993  CF=17.643  LICM=13.940  DCE=6.593  CSE=0.000  AS=0.000
+   selected : CP (confidence 0.44) [selection CP gave no gain; fell back to CF]
+   applied  : CF  instructions 42 -> 40 (-2),  weighted cost 825 -> 823 (-2)
+-- iteration 11 --
+   features : const_ratio=0.45  max_loop_depth=2  num_algebraic_ops=0  num_const_defs=4
+               num_constants=18  num_dead_stmts=1  num_distinct_vars=14  num_foldable=0
+               num_loop_invariant_ops=2  num_loop_ops=17  num_prop_sites=1  num_repeated_expr=0
+               num_statements=40  num_tmp_vars=9
+   scores   : CP=29.529  CF=17.370  LICM=13.940  DCE=3.426  CSE=0.000  AS=0.000
+   selected : CP (confidence 0.46) [selection CP gave no gain; fell back to DCE]
+   applied  : DCE  instructions 40 -> 39 (-1),  weighted cost 823 -> 813 (-10)
+-- iteration 12 --
+   features : const_ratio=0.461538  max_loop_depth=2  num_algebraic_ops=0  num_const_defs=4
+               num_constants=18  num_dead_stmts=1  num_distinct_vars=13  num_foldable=0
+               num_loop_invariant_ops=2  num_loop_ops=16  num_prop_sites=1  num_repeated_expr=0
+               num_statements=39  num_tmp_vars=8
+   scores   : CP=28.717  CF=16.892  LICM=13.120  DCE=3.332  CSE=0.000  AS=0.000
+   selected : CP (confidence 0.46) [selection CP gave no gain; fell back to DCE]
+   applied  : DCE  instructions 39 -> 38 (-1),  weighted cost 813 -> 803 (-10)
+-- iteration 13 --
+   features : const_ratio=0.473684  max_loop_depth=2  num_algebraic_ops=0  num_const_defs=4
+               num_constants=18  num_dead_stmts=0  num_distinct_vars=12  num_foldable=0
+               num_loop_invariant_ops=1  num_loop_ops=15  num_prop_sites=1  num_repeated_expr=0
+               num_statements=38  num_tmp_vars=7
+   scores   : CP=27.862  CF=16.389  LICM=12.300  CSE=0.000  DCE=0.000  AS=0.000
+   selected : CP (confidence 0.49) -> no strategy improves the code, converged
+   TOTAL    : instructions 77 -> 38 (50.6% smaller), weighted cost 869 -> 803 (7.6% cheaper) in 13 iterations; semantics preserved: True
+
+=== constant_propagation_023  (selector: ml_extended) ===
+-- iteration 1 --
+   features : const_ratio=0.155844  max_loop_depth=2  num_algebraic_ops=0  num_const_defs=10
+               num_constants=12  num_dead_stmts=2  num_distinct_vars=47  num_foldable=2
+               num_loop_invariant_ops=2  num_loop_ops=18  num_prop_sites=25  num_repeated_expr=0
+               num_statements=77  num_tmp_vars=26
+   scores   : DCE=0.973  CP=0.017  CF=0.010  CSE=0.000  LICM=0.000  AS=0.000
+   selected : DCE (confidence 0.97)
+   applied  : DCE  instructions 77 -> 75 (-2),  weighted cost 869 -> 858 (-11)
+-- iteration 2 --
+   features : const_ratio=0.16  max_loop_depth=2  num_algebraic_ops=0  num_const_defs=10
+               num_constants=12  num_dead_stmts=2  num_distinct_vars=45  num_foldable=2
+               num_loop_invariant_ops=2  num_loop_ops=17  num_prop_sites=25  num_repeated_expr=0
+               num_statements=75  num_tmp_vars=26
+   scores   : DCE=0.962  CP=0.029  CF=0.009  CSE=0.000  LICM=0.000  AS=0.000
+   selected : DCE (confidence 0.96)
+   applied  : DCE  instructions 75 -> 73 (-2),  weighted cost 858 -> 847 (-11)
+-- iteration 3 --
+   features : const_ratio=0.164384  max_loop_depth=2  num_algebraic_ops=0  num_const_defs=10
+               num_constants=12  num_dead_stmts=2  num_distinct_vars=43  num_foldable=2
+               num_loop_invariant_ops=2  num_loop_ops=16  num_prop_sites=24  num_repeated_expr=0
+               num_statements=73  num_tmp_vars=24
+   scores   : DCE=0.946  CP=0.048  CF=0.006  CSE=0.000  LICM=0.000  AS=0.000
+   selected : DCE (confidence 0.95)
+   applied  : DCE  instructions 73 -> 71 (-2),  weighted cost 847 -> 836 (-11)
+-- iteration 4 --
+   features : const_ratio=0.169014  max_loop_depth=2  num_algebraic_ops=0  num_const_defs=10
+               num_constants=12  num_dead_stmts=0  num_distinct_vars=41  num_foldable=2
+               num_loop_invariant_ops=1  num_loop_ops=15  num_prop_sites=22  num_repeated_expr=0
+               num_statements=71  num_tmp_vars=22
+   scores   : CP=0.998  CF=0.001  DCE=0.000  CSE=0.000  LICM=0.000  AS=0.000
+   selected : CP (confidence 1.00)
+   applied  : CP  instructions 71 -> 64 (-7),  weighted cost 836 -> 829 (-7)
+-- iteration 5 --
+   features : const_ratio=0.25  max_loop_depth=2  num_algebraic_ops=0  num_const_defs=3
+               num_constants=16  num_dead_stmts=0  num_distinct_vars=34  num_foldable=6
+               num_loop_invariant_ops=1  num_loop_ops=15  num_prop_sites=0  num_repeated_expr=0
+               num_statements=64  num_tmp_vars=22
+   scores   : CF=1.000  AS=0.000  CSE=0.000  CP=0.000  LICM=0.000  DCE=0.000
+   selected : CF (confidence 1.00)
+   applied  : CF  instructions 64 -> 58 (-6),  weighted cost 829 -> 823 (-6)
+-- iteration 6 --
+   features : const_ratio=0.275862  max_loop_depth=2  num_algebraic_ops=0  num_const_defs=7
+               num_constants=16  num_dead_stmts=0  num_distinct_vars=28  num_foldable=2
+               num_loop_invariant_ops=1  num_loop_ops=15  num_prop_sites=4  num_repeated_expr=0
+               num_statements=58  num_tmp_vars=16
+   scores   : CF=0.982  CP=0.018  AS=0.000  DCE=0.000  CSE=0.000  LICM=0.000
+   selected : CF (confidence 0.98)
+   applied  : CF  instructions 58 -> 56 (-2),  weighted cost 823 -> 821 (-2)
+-- iteration 7 --
+   features : const_ratio=0.285714  max_loop_depth=2  num_algebraic_ops=0  num_const_defs=8
+               num_constants=16  num_dead_stmts=0  num_distinct_vars=26  num_foldable=1
+               num_loop_invariant_ops=1  num_loop_ops=15  num_prop_sites=5  num_repeated_expr=0
+               num_statements=56  num_tmp_vars=14
+   scores   : CP=0.959  CF=0.041  AS=0.000  DCE=0.000  LICM=0.000  CSE=0.000
+   selected : CP (confidence 0.96)
+   applied  : CP  instructions 56 -> 55 (-1),  weighted cost 821 -> 820 (-1)
+-- iteration 8 --
+   features : const_ratio=0.363636  max_loop_depth=2  num_algebraic_ops=0  num_const_defs=7
+               num_constants=20  num_dead_stmts=4  num_distinct_vars=25  num_foldable=5
+               num_loop_invariant_ops=1  num_loop_ops=15  num_prop_sites=0  num_repeated_expr=0
+               num_statements=55  num_tmp_vars=14
+   scores   : CF=1.000  DCE=0.000  AS=0.000  CP=0.000  CSE=0.000  LICM=0.000
+   selected : CF (confidence 1.00)
+   applied  : CF  instructions 55 -> 50 (-5),  weighted cost 820 -> 815 (-5)
+-- iteration 9 --
+   features : const_ratio=0.4  max_loop_depth=2  num_algebraic_ops=0  num_const_defs=12
+               num_constants=20  num_dead_stmts=4  num_distinct_vars=20  num_foldable=0
+               num_loop_invariant_ops=1  num_loop_ops=15  num_prop_sites=6  num_repeated_expr=0
+               num_statements=50  num_tmp_vars=9
+   scores   : CP=0.988  CF=0.012  DCE=0.000  AS=0.000  CSE=0.000  LICM=0.000
+   selected : CP (confidence 0.99)
+   applied  : CP  instructions 50 -> 41 (-9),  weighted cost 815 -> 806 (-9)
+-- iteration 10 --
+   features : const_ratio=0.414634  max_loop_depth=2  num_algebraic_ops=0  num_const_defs=3
+               num_constants=17  num_dead_stmts=0  num_distinct_vars=15  num_foldable=1
+               num_loop_invariant_ops=1  num_loop_ops=15  num_prop_sites=0  num_repeated_expr=0
+               num_statements=41  num_tmp_vars=9
+   scores   : CF=1.000  CP=0.000  AS=0.000  DCE=0.000  CSE=0.000  LICM=0.000
+   selected : CF (confidence 1.00)
+   applied  : CF  instructions 41 -> 40 (-1),  weighted cost 806 -> 805 (-1)
+-- iteration 11 --
+   features : const_ratio=0.425  max_loop_depth=2  num_algebraic_ops=0  num_const_defs=4
+               num_constants=17  num_dead_stmts=0  num_distinct_vars=14  num_foldable=0
+               num_loop_invariant_ops=1  num_loop_ops=15  num_prop_sites=2  num_repeated_expr=0
+               num_statements=40  num_tmp_vars=8
+   scores   : CF=1.000  CP=0.000  AS=0.000  DCE=0.000  CSE=0.000  LICM=0.000
+   selected : CF (confidence 1.00) [selection CF gave no gain; fell back to CP]
+   applied  : CP  instructions 40 -> 39 (-1),  weighted cost 805 -> 804 (-1)
+-- iteration 12 --
+   features : const_ratio=0.461538  max_loop_depth=2  num_algebraic_ops=0  num_const_defs=3
+               num_constants=18  num_dead_stmts=0  num_distinct_vars=13  num_foldable=1
+               num_loop_invariant_ops=1  num_loop_ops=15  num_prop_sites=0  num_repeated_expr=0
+               num_statements=39  num_tmp_vars=8
+   scores   : CF=1.000  CP=0.000  AS=0.000  DCE=0.000  CSE=0.000  LICM=0.000
+   selected : CF (confidence 1.00)
+   applied  : CF  instructions 39 -> 38 (-1),  weighted cost 804 -> 803 (-1)
+-- iteration 13 --
+   features : const_ratio=0.473684  max_loop_depth=2  num_algebraic_ops=0  num_const_defs=4
+               num_constants=18  num_dead_stmts=0  num_distinct_vars=12  num_foldable=0
+               num_loop_invariant_ops=1  num_loop_ops=15  num_prop_sites=1  num_repeated_expr=0
+               num_statements=38  num_tmp_vars=7
+   scores   : CF=1.000  CP=0.000  AS=0.000  DCE=0.000  CSE=0.000  LICM=0.000
+   selected : CF (confidence 1.00) -> no strategy improves the code, converged
+   TOTAL    : instructions 77 -> 38 (50.6% smaller), weighted cost 869 -> 803 (7.6% cheaper) in 13 iterations; semantics preserved: True
+
+--- final optimized three-address code ---
+   1      p3 = read()
+   2      r12 = 117
+   3      t9 = r12 + 6
+   4      r12 = t9
+   5      acc_x19 = 0
+   6      i_n18 = 0
+      L1:
+   7      t19 = i_n18 < 26
+   8      ifFalse t19 goto L2
+   9      t22 = acc_x19 + i_n18
+  10      acc_x19 = t22
+  11      j_e21 = 0
+      L3:
+  12      t23 = j_e21 < 3
+  13      ifFalse t23 goto L4
+  14      t24 = acc_x19 + j_e21
+  15      acc_x19 = t24
+  16      t25 = j_e21 + 1
+  17      j_e21 = t25
+  18      goto L3
+      L4:
+  19      t26 = i_n18 + 1
+  20      i_n18 = t26
+  21      goto L1
+      L2:
+  22      print 8
+  23      print 7
+  24      print 9
+  25      print 6
+  26      print r12
+  27      print 5
+  28      print 9
+  29      print 120
+  30      print 48
+  31      print 640
+  32      print 12
+  33      print 34
+  34      print 111
+  35      print 2
+  36      print 16
+  37      print acc_x19
+  38      print p3

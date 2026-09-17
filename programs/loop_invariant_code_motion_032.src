@@ -1,0 +1,20 @@
+int x1 = 12;
+read(q2);
+read(p3);
+read(z4);
+int e5 = x1 - 0;
+int z6 = p3 * 1;
+int e7 = q2 + 2 + 10;
+int acc_x9 = 0;
+for (i_u8 = 0; i_u8 < 10; i_u8 = i_u8 + 1) {
+  int inv_w10 = z6 * e7 + p3;
+  acc_x9 = acc_x9 + inv_w10 + i_u8;
+}
+print(z6);
+print(p3);
+print(q2);
+print(z4);
+print(e5);
+print(e7);
+print(x1);
+print(acc_x9);

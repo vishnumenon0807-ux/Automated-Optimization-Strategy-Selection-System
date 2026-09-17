@@ -1,0 +1,24 @@
+int b1 = 8;
+read(b2);
+read(h3);
+int v4 = 8;
+int a5 = v4 + b2;
+a5 = a5 - v4;
+int x6 = b2 / 1;
+int c7 = 0 + a5;
+int w8 = h3 * v4;
+int dead_y9 = b2 + a5 * x6;
+int acc_y11 = 0;
+for (i_m10 = 0; i_m10 < 20; i_m10 = i_m10 + 1) {
+  int inv_v12 = c7 * h3 + v4;
+  acc_y11 = acc_y11 + inv_v12 + i_m10;
+}
+print(w8);
+print(c7);
+print(b1);
+print(v4);
+print(b2);
+print(x6);
+print(a5);
+print(acc_y11);
+print(h3);

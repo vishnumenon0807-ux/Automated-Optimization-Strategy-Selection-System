@@ -1,0 +1,41 @@
+int v1 = 2;
+read(r2);
+read(m3);
+int y4 = r2 + m3 + r2 + 9;
+int x5 = r2 + m3 + r2 - 3;
+int x6 = r2 + 4;
+int f7 = 9 * 5 * 10 + 10;
+int dead_c8 = m3 * 5 + f7;
+int q9 = r2 / 1;
+int dead_f10 = q9 - 9 - x5;
+int a11 = 6;
+int w12 = a11 + r2;
+w12 = w12 - a11;
+int u13 = x6 - f7;
+int acc_v15 = 0;
+for (i_r14 = 0; i_r14 < 14; i_r14 = i_r14 + 1) {
+  int inv_g16 = r2 * y4 + f7;
+  acc_v15 = acc_v15 + inv_g16 + i_r14;
+  for (j_v17 = 0; j_v17 < 3; j_v17 = j_v17 + 1) {
+    acc_v15 = acc_v15 + j_v17;
+  }
+}
+int n18 = 0;
+if (m3 > 15) {
+  n18 = x5 * v1;
+} else {
+  n18 = acc_v15 - 8;
+}
+print(n18);
+print(f7);
+print(x6);
+print(acc_v15);
+print(v1);
+print(a11);
+print(w12);
+print(q9);
+print(u13);
+print(x5);
+print(y4);
+print(m3);
+print(r2);

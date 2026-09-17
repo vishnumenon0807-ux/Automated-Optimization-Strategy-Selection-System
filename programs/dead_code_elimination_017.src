@@ -1,0 +1,35 @@
+int e1 = 3;
+read(h2);
+read(f3);
+read(z4);
+int dead_p5 = z4 * z4 + 6;
+int dead_b6 = f3 + 10 * 2;
+int h7 = 2 + 3 * 10;
+int dead_w8 = h2 + z4 + 8;
+int m9 = h7 - z4;
+int q10 = f3 * h2 - e1 + 1;
+int a11 = f3 * h2 - e1 - 6;
+int dead_n12 = a11 + f3 + h7;
+int y13 = h7 + 11 + a11;
+int r14 = a11 + q10 - q10 + 5;
+int e15 = a11 + q10 - q10 - 6;
+int e16 = 10 * 4 + 10;
+int q17 = 0;
+if (e1 > 14) {
+  q17 = z4 - 12;
+} else {
+  q17 = r14 * 1;
+}
+print(e16);
+print(z4);
+print(h7);
+print(f3);
+print(h2);
+print(a11);
+print(e15);
+print(m9);
+print(y13);
+print(q17);
+print(q10);
+print(r14);
+print(e1);

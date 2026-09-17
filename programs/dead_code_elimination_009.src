@@ -1,0 +1,29 @@
+int g1 = 3;
+read(z2);
+read(f3);
+read(a4);
+int dead_b5 = a4 - a4 * 1;
+int x6 = z2 * 0;
+int dead_e7 = z2 + 7 * a4;
+int q8 = x6 - x6;
+int dead_r9 = x6 * 12 - z2;
+int dead_d10 = q8 - a4 - 4;
+int x11 = z2 + a4 - a4;
+int x12 = 0 + g1;
+int dead_b13 = z2 - x11 * 2;
+int dead_y14 = x6 - 3 + 7;
+int w15 = 0;
+if (g1 > 14) {
+  w15 = a4 * x6;
+} else {
+  w15 = x12 - 12;
+}
+print(q8);
+print(g1);
+print(z2);
+print(x11);
+print(x6);
+print(w15);
+print(f3);
+print(a4);
+print(x12);

@@ -1,0 +1,36 @@
+int f1 = 9;
+read(v2);
+read(a3);
+read(r4);
+int q5 = a3 * a3;
+int d6 = v2 * f1 * a3 + 11;
+int h7 = v2 * f1 * a3 - 5;
+int h8 = 2;
+int r9 = h8 * d6;
+r9 = r9 - h8;
+int z10 = 7;
+int x11 = z10 - d6;
+x11 = x11 - z10;
+int g12 = 7 * 4 + 12;
+int g13 = g12 * h7 - z10;
+int g14 = x11 * 8 + q5;
+int acc_e16 = 0;
+for (i_q15 = 0; i_q15 < 9; i_q15 = i_q15 + 1) {
+  int inv_g17 = h7 * r9 + g14;
+  acc_e16 = acc_e16 + inv_g17 + i_q15;
+}
+print(x11);
+print(d6);
+print(a3);
+print(r9);
+print(h7);
+print(v2);
+print(r4);
+print(g13);
+print(h8);
+print(f1);
+print(g14);
+print(q5);
+print(g12);
+print(acc_e16);
+print(z10);

@@ -1,0 +1,17 @@
+{
+  "n_programs": 240,
+  "n_pass_applications_verified": 1440,
+  "n_semantic_violations": 0,
+  "n_unlabelled_dropped": 0,
+  "n_compile_errors": 0,
+  "class_counts": {
+    "constant_folding": 38,
+    "loop_invariant_code_motion": 29,
+    "common_subexpr_elimination": 36,
+    "constant_propagation": 51,
+    "dead_code_elimination": 43,
+    "algebraic_simplification": 43
+  },
+  "mean_initial_size": 68.975,
+  "mean_initial_cost": 222.2
+}

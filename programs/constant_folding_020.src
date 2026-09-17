@@ -1,0 +1,31 @@
+int h1 = 3;
+read(a2);
+read(m3);
+read(z4);
+int y5 = 5 + 5 + 6;
+int u6 = a2 + z4 + 1;
+int dead_n7 = a2 + z4 - y5;
+int e8 = 1 * 5 + 6;
+int u9 = 8;
+int b10 = u9 + m3;
+b10 = b10 * u9;
+int f11 = 3 * 4;
+int f12 = 1 * z4;
+int c13 = f11 - m3;
+int acc_z15 = 0;
+for (i_g14 = 0; i_g14 < 13; i_g14 = i_g14 + 1) {
+  acc_z15 = acc_z15 + 4 + 2 * 12 + i_g14;
+}
+print(m3);
+print(a2);
+print(f11);
+print(c13);
+print(z4);
+print(e8);
+print(acc_z15);
+print(u9);
+print(y5);
+print(f12);
+print(u6);
+print(b10);
+print(h1);

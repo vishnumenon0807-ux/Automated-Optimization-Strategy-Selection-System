@@ -1,0 +1,39 @@
+int p1 = 15;
+read(v2);
+read(p3);
+int dead_q4 = v2 * p1 - 5;
+int h5 = p3 - 0;
+int e6 = p3 - p1 * p1 + 8;
+int x7 = p3 - p1 * p1 - 5;
+int q8 = x7 * 1;
+int d9 = 10 * 7;
+int v10 = x7 + 0;
+int v11 = v2 + 12;
+int dead_d12 = q8 + 9 * v10;
+int p13 = h5 * 5 + 3;
+int q14 = 1 * v11;
+int n15 = e6 + 0;
+int w16 = v10 * v11;
+int v17 = 1 + 2;
+int d18 = 0;
+if (v11 > 19) {
+  d18 = q14 * 12;
+} else {
+  d18 = v10 - 9;
+}
+print(d9);
+print(p13);
+print(x7);
+print(v10);
+print(v2);
+print(p3);
+print(p1);
+print(v11);
+print(q8);
+print(q14);
+print(h5);
+print(e6);
+print(w16);
+print(v17);
+print(n15);
+print(d18);

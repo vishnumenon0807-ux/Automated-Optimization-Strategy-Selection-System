@@ -1,0 +1,44 @@
+int a1 = 13;
+read(y2);
+read(z3);
+int e4 = y2 / 1;
+int e5 = y2 * y2 + z3;
+int b6 = e4 - y2 * z3 + 1;
+int b7 = e4 - y2 * z3 - 8;
+int p8 = e5 - e4;
+int q9 = 1 * y2;
+int m10 = e4 - p8 * q9 + 12;
+int x11 = e4 - p8 * q9 - 8;
+int c12 = z3 * e4 * z3 + 7;
+int r13 = z3 * e4 * z3 - 1;
+int y14 = a1 * b7 + z3 + 5;
+int e15 = a1 * b7 + z3 - 9;
+int u16 = 9;
+int d17 = u16 - c12;
+d17 = d17 - u16;
+int p18 = d17 + d17 + 9;
+int q19 = 0;
+if (y2 > 14) {
+  q19 = c12 - 7;
+} else {
+  q19 = b7 * e4;
+}
+print(c12);
+print(y2);
+print(e15);
+print(d17);
+print(r13);
+print(z3);
+print(a1);
+print(p18);
+print(b7);
+print(b6);
+print(q19);
+print(m10);
+print(p8);
+print(e4);
+print(e5);
+print(x11);
+print(y14);
+print(u16);
+print(q9);

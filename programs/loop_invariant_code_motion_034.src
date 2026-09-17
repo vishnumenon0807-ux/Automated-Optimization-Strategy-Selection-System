@@ -1,0 +1,23 @@
+int p1 = 5;
+read(c2);
+read(h3);
+read(r4);
+int w5 = h3 * r4 * 8;
+int w6 = 9 + 9 - 2 * 4;
+int a7 = 7;
+int n8 = a7 * w5;
+n8 = n8 * a7;
+int acc_r10 = 0;
+for (i_g9 = 0; i_g9 < 18; i_g9 = i_g9 + 1) {
+  int inv_z11 = r4 * w5 + w6;
+  acc_r10 = acc_r10 + inv_z11 + i_g9;
+}
+print(r4);
+print(w5);
+print(n8);
+print(acc_r10);
+print(h3);
+print(w6);
+print(c2);
+print(p1);
+print(a7);

@@ -1,0 +1,26 @@
+int y1 = 6;
+read(r2);
+read(v3);
+read(d4);
+int p5 = y1 * d4 + d4;
+int b6 = 3 - 6 + 9 + 3;
+int y7 = p5 - 7 - 9;
+int r8 = 7 * 1 - 5 + 7;
+int dead_u9 = p5 + y1 * 6;
+int dead_v10 = r8 + b6 - d4;
+int acc_p12 = 0;
+for (i_b11 = 0; i_b11 < 4; i_b11 = i_b11 + 1) {
+  acc_p12 = acc_p12 + 9 + 7 * 6 + i_b11;
+  for (j_h13 = 0; j_h13 < 3; j_h13 = j_h13 + 1) {
+    acc_p12 = acc_p12 + j_h13;
+  }
+}
+print(y1);
+print(v3);
+print(y7);
+print(r8);
+print(acc_p12);
+print(r2);
+print(b6);
+print(d4);
+print(p5);

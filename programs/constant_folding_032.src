@@ -1,0 +1,34 @@
+int y1 = 8;
+read(d2);
+read(q3);
+int m4 = 6 * 3 + 12 + 9;
+int a5 = d2 - d2 - m4;
+int v6 = q3 + y1;
+int a7 = 8;
+int c8 = a7 * q3;
+c8 = c8 + a7;
+int h9 = 7 - 7 * 11 + 1;
+int m10 = a5 + m4;
+int q11 = 7;
+int g12 = q11 - a5;
+g12 = g12 - q11;
+int dead_w13 = m4 + c8 - q3;
+int p14 = 0;
+if (y1 > 18) {
+  p14 = m4 * 10;
+} else {
+  p14 = m10 + m10;
+}
+print(q11);
+print(a5);
+print(a7);
+print(m10);
+print(h9);
+print(d2);
+print(g12);
+print(q3);
+print(c8);
+print(p14);
+print(v6);
+print(m4);
+print(y1);

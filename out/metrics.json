@@ -1,0 +1,939 @@
+{
+  "n_programs": 240,
+  "seed": 42,
+  "feature_sets": {
+    "required_8": {
+      "features": [
+        "num_statements",
+        "num_constants",
+        "num_repeated_expr",
+        "num_dead_stmts",
+        "num_algebraic_ops",
+        "num_loop_ops",
+        "num_tmp_vars",
+        "const_ratio"
+      ],
+      "models": {
+        "DecisionTree": {
+          "test_accuracy": 0.6666666666666666,
+          "test_macro_f1": 0.6847041336043893,
+          "cv_accuracy_mean": 0.6916666666666667,
+          "cv_accuracy_std": 0.0726483157256779,
+          "per_class": {
+            "constant_folding": {
+              "precision": 0.5,
+              "recall": 0.5454545454545454,
+              "f1": 0.5217391304347826,
+              "support": 11
+            },
+            "constant_propagation": {
+              "precision": 0.42105263157894735,
+              "recall": 0.5333333333333333,
+              "f1": 0.47058823529411764,
+              "support": 15
+            },
+            "common_subexpr_elimination": {
+              "precision": 0.7857142857142857,
+              "recall": 1.0,
+              "f1": 0.88,
+              "support": 11
+            },
+            "dead_code_elimination": {
+              "precision": 0.875,
+              "recall": 0.5384615384615384,
+              "f1": 0.6666666666666666,
+              "support": 13
+            },
+            "algebraic_simplification": {
+              "precision": 0.7692307692307693,
+              "recall": 0.7692307692307693,
+              "f1": 0.7692307692307693,
+              "support": 13
+            },
+            "loop_invariant_code_motion": {
+              "precision": 1.0,
+              "recall": 0.6666666666666666,
+              "f1": 0.8,
+              "support": 9
+            }
+          },
+          "confusion": [
+            [
+              6,
+              4,
+              0,
+              0,
+              1,
+              0
+            ],
+            [
+              6,
+              8,
+              0,
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              11,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              5,
+              0,
+              7,
+              1,
+              0
+            ],
+            [
+              0,
+              1,
+              2,
+              0,
+              10,
+              0
+            ],
+            [
+              0,
+              1,
+              1,
+              1,
+              0,
+              6
+            ]
+          ]
+        },
+        "RandomForest": {
+          "test_accuracy": 0.6527777777777778,
+          "test_macro_f1": 0.6687256193650056,
+          "cv_accuracy_mean": 0.7416666666666667,
+          "cv_accuracy_std": 0.02124591463996994,
+          "per_class": {
+            "constant_folding": {
+              "precision": 0.3333333333333333,
+              "recall": 0.36363636363636365,
+              "f1": 0.34782608695652173,
+              "support": 11
+            },
+            "constant_propagation": {
+              "precision": 0.42105263157894735,
+              "recall": 0.5333333333333333,
+              "f1": 0.47058823529411764,
+              "support": 15
+            },
+            "common_subexpr_elimination": {
+              "precision": 0.8461538461538461,
+              "recall": 1.0,
+              "f1": 0.9166666666666666,
+              "support": 11
+            },
+            "dead_code_elimination": {
+              "precision": 0.8888888888888888,
+              "recall": 0.6153846153846154,
+              "f1": 0.7272727272727273,
+              "support": 13
+            },
+            "algebraic_simplification": {
+              "precision": 0.8333333333333334,
+              "recall": 0.7692307692307693,
+              "f1": 0.8,
+              "support": 13
+            },
+            "loop_invariant_code_motion": {
+              "precision": 0.8571428571428571,
+              "recall": 0.6666666666666666,
+              "f1": 0.75,
+              "support": 9
+            }
+          },
+          "confusion": [
+            [
+              4,
+              6,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              6,
+              8,
+              0,
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              11,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              4,
+              0,
+              8,
+              1,
+              0
+            ],
+            [
+              0,
+              1,
+              2,
+              0,
+              10,
+              0
+            ],
+            [
+              2,
+              0,
+              0,
+              1,
+              0,
+              6
+            ]
+          ]
+        },
+        "LogisticRegression": {
+          "test_accuracy": 0.7083333333333334,
+          "test_macro_f1": 0.6884365747233909,
+          "cv_accuracy_mean": 0.7708333333333334,
+          "cv_accuracy_std": 0.045643546458763846,
+          "per_class": {
+            "constant_folding": {
+              "precision": 0.5384615384615384,
+              "recall": 0.6363636363636364,
+              "f1": 0.5833333333333334,
+              "support": 11
+            },
+            "constant_propagation": {
+              "precision": 0.6875,
+              "recall": 0.7333333333333333,
+              "f1": 0.7096774193548387,
+              "support": 15
+            },
+            "common_subexpr_elimination": {
+              "precision": 0.7857142857142857,
+              "recall": 1.0,
+              "f1": 0.88,
+              "support": 11
+            },
+            "dead_code_elimination": {
+              "precision": 0.9,
+              "recall": 0.6923076923076923,
+              "f1": 0.782608695652174,
+              "support": 13
+            },
+            "algebraic_simplification": {
+              "precision": 0.8333333333333334,
+              "recall": 0.7692307692307693,
+              "f1": 0.8,
+              "support": 13
+            },
+            "loop_invariant_code_motion": {
+              "precision": 0.42857142857142855,
+              "recall": 0.3333333333333333,
+              "f1": 0.375,
+              "support": 9
+            }
+          },
+          "confusion": [
+            [
+              7,
+              1,
+              0,
+              0,
+              0,
+              3
+            ],
+            [
+              4,
+              11,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              11,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              2,
+              0,
+              9,
+              1,
+              1
+            ],
+            [
+              1,
+              0,
+              2,
+              0,
+              10,
+              0
+            ],
+            [
+              1,
+              2,
+              1,
+              1,
+              1,
+              3
+            ]
+          ]
+        },
+        "MLP": {
+          "test_accuracy": 0.75,
+          "test_macro_f1": 0.753029507789738,
+          "cv_accuracy_mean": 0.7499999999999999,
+          "cv_accuracy_std": 0.03952847075210473,
+          "per_class": {
+            "constant_folding": {
+              "precision": 0.6,
+              "recall": 0.5454545454545454,
+              "f1": 0.5714285714285714,
+              "support": 11
+            },
+            "constant_propagation": {
+              "precision": 0.6470588235294118,
+              "recall": 0.7333333333333333,
+              "f1": 0.6875,
+              "support": 15
+            },
+            "common_subexpr_elimination": {
+              "precision": 0.8333333333333334,
+              "recall": 0.9090909090909091,
+              "f1": 0.8695652173913043,
+              "support": 11
+            },
+            "dead_code_elimination": {
+              "precision": 0.75,
+              "recall": 0.6923076923076923,
+              "f1": 0.72,
+              "support": 13
+            },
+            "algebraic_simplification": {
+              "precision": 0.8461538461538461,
+              "recall": 0.8461538461538461,
+              "f1": 0.8461538461538461,
+              "support": 13
+            },
+            "loop_invariant_code_motion": {
+              "precision": 0.875,
+              "recall": 0.7777777777777778,
+              "f1": 0.8235294117647058,
+              "support": 9
+            }
+          },
+          "confusion": [
+            [
+              6,
+              3,
+              1,
+              1,
+              0,
+              0
+            ],
+            [
+              3,
+              11,
+              0,
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              10,
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              3,
+              0,
+              9,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              1,
+              1,
+              11,
+              0
+            ],
+            [
+              1,
+              0,
+              0,
+              1,
+              0,
+              7
+            ]
+          ]
+        }
+      },
+      "feature_importance": {
+        "num_statements": 0.09219377307310689,
+        "num_constants": 0.09866146572754345,
+        "num_repeated_expr": 0.08685285755256976,
+        "num_dead_stmts": 0.16683079511494658,
+        "num_algebraic_ops": 0.15318509841946065,
+        "num_loop_ops": 0.1447722748084705,
+        "num_tmp_vars": 0.09026041460650912,
+        "const_ratio": 0.1672433206973931
+      }
+    },
+    "extended_14": {
+      "features": [
+        "num_statements",
+        "num_constants",
+        "num_repeated_expr",
+        "num_dead_stmts",
+        "num_algebraic_ops",
+        "num_loop_ops",
+        "num_tmp_vars",
+        "const_ratio",
+        "num_foldable",
+        "num_const_defs",
+        "num_prop_sites",
+        "num_loop_invariant_ops",
+        "max_loop_depth",
+        "num_distinct_vars"
+      ],
+      "models": {
+        "DecisionTree": {
+          "test_accuracy": 0.7083333333333334,
+          "test_macro_f1": 0.7019230769230768,
+          "cv_accuracy_mean": 0.7374999999999999,
+          "cv_accuracy_std": 0.07046472718869902,
+          "per_class": {
+            "constant_folding": {
+              "precision": 0.7,
+              "recall": 0.6363636363636364,
+              "f1": 0.6666666666666666,
+              "support": 11
+            },
+            "constant_propagation": {
+              "precision": 0.7058823529411765,
+              "recall": 0.8,
+              "f1": 0.75,
+              "support": 15
+            },
+            "common_subexpr_elimination": {
+              "precision": 0.6,
+              "recall": 0.8181818181818182,
+              "f1": 0.6923076923076923,
+              "support": 11
+            },
+            "dead_code_elimination": {
+              "precision": 0.875,
+              "recall": 0.5384615384615384,
+              "f1": 0.6666666666666666,
+              "support": 13
+            },
+            "algebraic_simplification": {
+              "precision": 0.7692307692307693,
+              "recall": 0.7692307692307693,
+              "f1": 0.7692307692307693,
+              "support": 13
+            },
+            "loop_invariant_code_motion": {
+              "precision": 0.6666666666666666,
+              "recall": 0.6666666666666666,
+              "f1": 0.6666666666666666,
+              "support": 9
+            }
+          },
+          "confusion": [
+            [
+              7,
+              0,
+              1,
+              0,
+              1,
+              2
+            ],
+            [
+              1,
+              12,
+              1,
+              0,
+              1,
+              0
+            ],
+            [
+              1,
+              0,
+              9,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              4,
+              1,
+              7,
+              1,
+              0
+            ],
+            [
+              0,
+              1,
+              2,
+              0,
+              10,
+              0
+            ],
+            [
+              1,
+              0,
+              1,
+              1,
+              0,
+              6
+            ]
+          ]
+        },
+        "RandomForest": {
+          "test_accuracy": 0.8055555555555556,
+          "test_macro_f1": 0.8022202722202721,
+          "cv_accuracy_mean": 0.8375,
+          "cv_accuracy_std": 0.04249182927993989,
+          "per_class": {
+            "constant_folding": {
+              "precision": 0.8,
+              "recall": 0.7272727272727273,
+              "f1": 0.7619047619047619,
+              "support": 11
+            },
+            "constant_propagation": {
+              "precision": 0.6818181818181818,
+              "recall": 1.0,
+              "f1": 0.8108108108108109,
+              "support": 15
+            },
+            "common_subexpr_elimination": {
+              "precision": 0.7857142857142857,
+              "recall": 1.0,
+              "f1": 0.88,
+              "support": 11
+            },
+            "dead_code_elimination": {
+              "precision": 0.8888888888888888,
+              "recall": 0.6153846153846154,
+              "f1": 0.7272727272727273,
+              "support": 13
+            },
+            "algebraic_simplification": {
+              "precision": 0.9090909090909091,
+              "recall": 0.7692307692307693,
+              "f1": 0.8333333333333334,
+              "support": 13
+            },
+            "loop_invariant_code_motion": {
+              "precision": 1.0,
+              "recall": 0.6666666666666666,
+              "f1": 0.8,
+              "support": 9
+            }
+          },
+          "confusion": [
+            [
+              8,
+              2,
+              1,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              15,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              11,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              4,
+              0,
+              8,
+              1,
+              0
+            ],
+            [
+              0,
+              1,
+              2,
+              0,
+              10,
+              0
+            ],
+            [
+              2,
+              0,
+              0,
+              1,
+              0,
+              6
+            ]
+          ]
+        },
+        "LogisticRegression": {
+          "test_accuracy": 0.7777777777777778,
+          "test_macro_f1": 0.7592413381123059,
+          "cv_accuracy_mean": 0.825,
+          "cv_accuracy_std": 0.03632415786283893,
+          "per_class": {
+            "constant_folding": {
+              "precision": 0.7,
+              "recall": 0.6363636363636364,
+              "f1": 0.6666666666666666,
+              "support": 11
+            },
+            "constant_propagation": {
+              "precision": 0.875,
+              "recall": 0.9333333333333333,
+              "f1": 0.9032258064516129,
+              "support": 15
+            },
+            "common_subexpr_elimination": {
+              "precision": 0.7857142857142857,
+              "recall": 1.0,
+              "f1": 0.88,
+              "support": 11
+            },
+            "dead_code_elimination": {
+              "precision": 0.8181818181818182,
+              "recall": 0.6923076923076923,
+              "f1": 0.75,
+              "support": 13
+            },
+            "algebraic_simplification": {
+              "precision": 0.8333333333333334,
+              "recall": 0.7692307692307693,
+              "f1": 0.8,
+              "support": 13
+            },
+            "loop_invariant_code_motion": {
+              "precision": 0.5555555555555556,
+              "recall": 0.5555555555555556,
+              "f1": 0.5555555555555556,
+              "support": 9
+            }
+          },
+          "confusion": [
+            [
+              7,
+              0,
+              1,
+              0,
+              0,
+              3
+            ],
+            [
+              1,
+              14,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              11,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              2,
+              0,
+              9,
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              2,
+              1,
+              10,
+              0
+            ],
+            [
+              2,
+              0,
+              0,
+              1,
+              1,
+              5
+            ]
+          ]
+        },
+        "MLP": {
+          "test_accuracy": 0.8472222222222222,
+          "test_macro_f1": 0.8380634465684046,
+          "cv_accuracy_mean": 0.825,
+          "cv_accuracy_std": 0.02825970826302196,
+          "per_class": {
+            "constant_folding": {
+              "precision": 0.875,
+              "recall": 0.6363636363636364,
+              "f1": 0.7368421052631579,
+              "support": 11
+            },
+            "constant_propagation": {
+              "precision": 0.8333333333333334,
+              "recall": 1.0,
+              "f1": 0.9090909090909091,
+              "support": 15
+            },
+            "common_subexpr_elimination": {
+              "precision": 0.9166666666666666,
+              "recall": 1.0,
+              "f1": 0.9565217391304348,
+              "support": 11
+            },
+            "dead_code_elimination": {
+              "precision": 0.7857142857142857,
+              "recall": 0.8461538461538461,
+              "f1": 0.8148148148148148,
+              "support": 13
+            },
+            "algebraic_simplification": {
+              "precision": 0.9090909090909091,
+              "recall": 0.7692307692307693,
+              "f1": 0.8333333333333334,
+              "support": 13
+            },
+            "loop_invariant_code_motion": {
+              "precision": 0.7777777777777778,
+              "recall": 0.7777777777777778,
+              "f1": 0.7777777777777778,
+              "support": 9
+            }
+          },
+          "confusion": [
+            [
+              7,
+              1,
+              0,
+              0,
+              1,
+              2
+            ],
+            [
+              0,
+              15,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              11,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              2,
+              0,
+              11,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1,
+              2,
+              10,
+              0
+            ],
+            [
+              1,
+              0,
+              0,
+              1,
+              0,
+              7
+            ]
+          ]
+        }
+      },
+      "feature_importance": {
+        "num_statements": 0.03853741595102278,
+        "num_constants": 0.048787193947181645,
+        "num_repeated_expr": 0.05198616527445502,
+        "num_dead_stmts": 0.12865815338459485,
+        "num_algebraic_ops": 0.1309758256557326,
+        "num_loop_ops": 0.09049801215203732,
+        "num_tmp_vars": 0.04968416035570557,
+        "const_ratio": 0.10876579234201006,
+        "num_foldable": 0.1105797151522436,
+        "num_const_defs": 0.06724422018271108,
+        "num_prop_sites": 0.07880455651843592,
+        "num_loop_invariant_ops": 0.03351569694143836,
+        "max_loop_depth": 0.01957407797943499,
+        "num_distinct_vars": 0.042389014162996105
+      }
+    }
+  },
+  "rule_based": {
+    "test_accuracy": 0.5833333333333334,
+    "test_macro_f1": 0.5488294909225141,
+    "full_accuracy": 0.5291666666666667,
+    "per_class": {
+      "constant_folding": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 11
+      },
+      "constant_propagation": {
+        "precision": 0.6923076923076923,
+        "recall": 0.6,
+        "f1": 0.6428571428571429,
+        "support": 15
+      },
+      "common_subexpr_elimination": {
+        "precision": 1.0,
+        "recall": 0.36363636363636365,
+        "f1": 0.5333333333333333,
+        "support": 11
+      },
+      "dead_code_elimination": {
+        "precision": 1.0,
+        "recall": 0.6923076923076923,
+        "f1": 0.8181818181818182,
+        "support": 13
+      },
+      "algebraic_simplification": {
+        "precision": 0.9166666666666666,
+        "recall": 0.8461538461538461,
+        "f1": 0.88,
+        "support": 13
+      },
+      "loop_invariant_code_motion": {
+        "precision": 0.2647058823529412,
+        "recall": 1.0,
+        "f1": 0.4186046511627907,
+        "support": 9
+      }
+    },
+    "confusion": [
+      [
+        0,
+        4,
+        0,
+        0,
+        1,
+        6
+      ],
+      [
+        0,
+        9,
+        0,
+        0,
+        0,
+        6
+      ],
+      [
+        0,
+        0,
+        4,
+        0,
+        0,
+        7
+      ],
+      [
+        0,
+        0,
+        0,
+        9,
+        0,
+        4
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        11,
+        2
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        9
+      ]
+    ]
+  },
+  "best_model": {
+    "name": "MLP[extended_14]",
+    "test_accuracy": 0.8472222222222222,
+    "features": [
+      "num_statements",
+      "num_constants",
+      "num_repeated_expr",
+      "num_dead_stmts",
+      "num_algebraic_ops",
+      "num_loop_ops",
+      "num_tmp_vars",
+      "const_ratio",
+      "num_foldable",
+      "num_const_defs",
+      "num_prop_sites",
+      "num_loop_invariant_ops",
+      "max_loop_depth",
+      "num_distinct_vars"
+    ]
+  },
+  "class_counts": {
+    "constant_folding": 38,
+    "constant_propagation": 51,
+    "common_subexpr_elimination": 36,
+    "dead_code_elimination": 43,
+    "algebraic_simplification": 43,
+    "loop_invariant_code_motion": 29
+  }
+}

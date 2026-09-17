@@ -1,0 +1,29 @@
+int q1 = 5;
+read(r2);
+read(r3);
+int v4 = 8;
+int y5 = v4 + r2;
+y5 = y5 * v4;
+int dead_z6 = r3 + v4 * q1;
+int dead_z7 = r3 + r3 + r2;
+int z8 = q1 - v4 * y5;
+int p9 = 8;
+int h10 = p9 * z8;
+h10 = h10 - p9;
+int dead_d11 = y5 - v4 - 11;
+int dead_h12 = r2 + r3 + r2;
+int h13 = 0;
+if (q1 > 19) {
+  h13 = p9 + 12;
+} else {
+  h13 = v4 * 10;
+}
+print(r3);
+print(h13);
+print(v4);
+print(q1);
+print(h10);
+print(z8);
+print(r2);
+print(p9);
+print(y5);

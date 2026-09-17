@@ -1,0 +1,26 @@
+int q1 = 5;
+read(q2);
+read(d3);
+int dead_w4 = q2 - q2 * d3;
+int c5 = q1 * q1 * q2;
+int q6 = q2 * q2 + 8;
+int h7 = q2 + c5 * q1;
+int acc_e9 = 0;
+for (i_m8 = 0; i_m8 < 4; i_m8 = i_m8 + 1) {
+  int inv_d10 = q1 * h7 + q1;
+  acc_e9 = acc_e9 + inv_d10 + i_m8;
+}
+int n11 = 0;
+if (h7 > 11) {
+  n11 = h7 * q2;
+} else {
+  n11 = q6 + acc_e9;
+}
+print(q1);
+print(c5);
+print(d3);
+print(q2);
+print(h7);
+print(acc_e9);
+print(q6);
+print(n11);

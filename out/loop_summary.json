@@ -1,0 +1,61 @@
+{
+  "ml_extended/fallback": {
+    "mean_size_reduction_pct": 35.62811850909103,
+    "mean_cost_reduction_pct": 27.67679406765815,
+    "mean_iterations": 10.970833333333333,
+    "mean_fallbacks": 3.5166666666666666,
+    "total_instructions_removed": 5785,
+    "all_correct": true
+  },
+  "ml_extended/strict": {
+    "mean_size_reduction_pct": 25.852284132792146,
+    "mean_cost_reduction_pct": 21.70978817171942,
+    "mean_iterations": 6.516666666666667,
+    "mean_fallbacks": 0.0,
+    "total_instructions_removed": 4114,
+    "all_correct": true,
+    "oracle_gain_captured": 0.7751693550390933
+  },
+  "ml_required8/fallback": {
+    "mean_size_reduction_pct": 35.46539058600054,
+    "mean_cost_reduction_pct": 27.625056204953825,
+    "mean_iterations": 11.095833333333333,
+    "mean_fallbacks": 5.4625,
+    "total_instructions_removed": 5756,
+    "all_correct": true
+  },
+  "ml_required8/strict": {
+    "mean_size_reduction_pct": 15.560212006182082,
+    "mean_cost_reduction_pct": 15.01913194847985,
+    "mean_iterations": 3.7958333333333334,
+    "mean_fallbacks": 0.0,
+    "total_instructions_removed": 2473,
+    "all_correct": true,
+    "oracle_gain_captured": 0.5553768244498808
+  },
+  "oracle/fallback": {
+    "mean_size_reduction_pct": 35.458451970293076,
+    "mean_cost_reduction_pct": 27.54715647205228,
+    "mean_iterations": 10.720833333333333,
+    "mean_fallbacks": 0.0,
+    "total_instructions_removed": 5758,
+    "all_correct": true
+  },
+  "rule_based/fallback": {
+    "mean_size_reduction_pct": 35.52359753422023,
+    "mean_cost_reduction_pct": 27.587125631250707,
+    "mean_iterations": 11.283333333333333,
+    "mean_fallbacks": 7.316666666666666,
+    "total_instructions_removed": 5771,
+    "all_correct": true
+  },
+  "rule_based/strict": {
+    "mean_size_reduction_pct": 8.81018590298186,
+    "mean_cost_reduction_pct": 11.497514758718513,
+    "mean_iterations": 2.5791666666666666,
+    "mean_fallbacks": 0.0,
+    "total_instructions_removed": 1335,
+    "all_correct": true,
+    "oracle_gain_captured": 0.3677000439112124
+  }
+}
