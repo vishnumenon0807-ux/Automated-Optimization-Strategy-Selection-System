@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Optimization Strategy Selection</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <h1>Automated Optimization Strategy Selection</h1>
+    <p>Paste a program, then step through each decision the selector makes.</p>
+  </header>
+
+  <section class="controls">
+    <div>
+      <label for="src">Source program</label>
+      <textarea id="src" spellcheck="false"></textarea>
+    </div>
+    <div class="options">
+      <label for="ex">Example</label>
+      <select id="ex"></select>
+
+      <label for="sel">Selector</label>
+      <select id="sel">
+        {% if 'ml_extended' in trained %}
+        <option value="ml_extended">ML &mdash; 14 features</option>
+        {% endif %}
+        {% if 'ml_required8' in trained %}
+        <option value="ml_required8">ML &mdash; 8 required features</option>
+        {% endif %}
+        <option value="rule_based">Rule-based baseline</option>
+        <option value="oracle">Oracle (tries all six)</option>
+      </select>
+
+      <label for="mode">On a non-improving pick</label>
+      <select id="mode">
+        <option value="fallback">Fall back to next best</option>
+        <option value="strict">Stop</option>
+      </select>
+
+      <button id="run" type="button">Optimize</button>
+    </div>
+  </section>
+
+  {% if not trained %}
+  <p class="msg warn">No trained model found. Run
+    <code>python scripts/train.py</code> to enable the ML selectors &mdash;
+    the rule-based and oracle selectors work without it.</p>
+  {% endif %}
+
+  <p id="msg" class="msg" hidden></p>
+
+  <section id="results" hidden>
+    <dl class="summary" id="summary"></dl>
+
+    <div class="timeline">
+      <span class="tl-label">Iteration</span>
+      <div id="timeline"></div>
+    </div>
+
+    <div class="panels">
+      <div class="panel">
+        <h2 id="decTitle">Decision</h2>
+        <table class="scores">
+          <thead>
+            <tr><th>Pass</th><th class="r">Score</th><th></th></tr>
+          </thead>
+          <tbody id="scores"></tbody>
+        </table>
+        <div id="verdict" class="verdict"></div>
+        <div id="feat" class="feat"></div>
+      </div>
+
+      <div class="panel">
+        <h2 id="codeTitle">Three-address code</h2>
+        <pre id="code" class="code"></pre>
+        <p class="legend">
+          <span class="key removed">removed</span>
+          <span class="key added">added or rewritten</span>
+        </p>
+        <p id="io" class="io"></p>
+      </div>
+    </div>
+  </section>
+
+</div>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
